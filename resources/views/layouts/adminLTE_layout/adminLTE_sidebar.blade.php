@@ -1,9 +1,11 @@
 <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-            <img src="{{asset('images/adminLTE_img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
-        </div>
+        @if(!empty(Auth()->guard('admin')->user()->image))
+            <div class="image">
+                <img src="{{asset('images/adminLTE_img/admin_photos/'.Auth()->guard('admin')->user()->image)}}" class="img-circle elevation-2" alt="User Image">
+            </div>
+        @endif
         <div class="info">
             <a href="#" class="d-block">{{ucwords(Auth()->guard('admin')->user()->type)}}</a>
         </div>
@@ -14,28 +16,50 @@
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="{{url('/admin/dashboard')}}" class="nav-link bs-popover-top">
+                 @if(Session()->get('page')=="dashboard")
+                     <?php   $active = 'active'  ?>
+                     @else
+                      <?php   $active = ''  ?>
+                 @endif
+               <a href="{{url('/admin/dashboard')}}" class="nav-link bs-popover-top {{$active}}" >
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>Dashboard</p>
-                </a>
+               </a>
             </li>
+               @if(Session()->get('page')=="settings"|| Session()->get('page')=="update_admin_details")
+                        <?php   $active = "active"  ?>
+                   @else
+                        <?php   $active = ""  ?>
+                    @endif
+
             <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link active">
+                <a href="#" class="nav-link  {{$active}}">
                     <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Settings <i class="right fas fa-angle-left"></i>
-                    </p>
+                    <p> Settings <i class="right fas fa-angle-left"></i></p>
                 </a>
-                <ul class="nav nav-treeview">
+
+
+                <ul class="nav nav-treeview ">
 
                     <li class="nav-item">
-                        <a href="{{url('/admin/settings')}}" class="nav-link">
+                              @if(Session()->get('page')=="settings")
+                                <?php  $active = "active" ?>
+                                  @else
+                                <?php  $active = ""  ?>
+                              @endif
+                        <a href="{{url('/admin/settings')}}" class="nav-link {{$active}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Update Password</p>
                         </a>
                     </li>
+
+                    @if(Session()->get('page')=="update_admin_details")
+                        <?php   $active = "active"  ?>
+                      @else
+                        <?php   $active = ""  ?>
+                    @endif
                     <li class="nav-item">
-                        <a href="{{url('/admin/update_admin_details')}}" class="nav-link">
+                        <a href="{{url('/admin/update_admin_details')}}" class="nav-link {{$active}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>admin Details</p>
                         </a>

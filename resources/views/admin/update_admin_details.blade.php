@@ -71,8 +71,8 @@
                         <label for="exampleInputFile">Image</label>
                         <input type="file"  class="form-control" name="admin_image" id="admin_image" accept="image/*">
                            @if(!empty(Auth()->guard('admin')->user()->image))
-                               <a href="/">View Image</a>
-                               <input type="hidden" class="form-control"  name="current_admin_image" value="{{Auth()->guard('admin')->user()->image}}" />
+                               <a href="/"> View Image </a>
+                               <input type="hidden" class="form-control"  name="current_admin_image" value="{{url("/images/adminLTE_img/admin_photos/".Auth()->guard('admin')->user()->image)}}" />
                            @endif
 
                      </div>

@@ -8,14 +8,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\ValidationException;
+use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
 
     public  function dashboard(){
+        Session::put('page','dashboard');
         return view('admin.admin_dashboard');
     }
     public  function settings(){
+        Session::put('page','settings');
     $admindetails =  Auth::guard('admin')->user() ;
         return view('admin.admin_settings')->with(compact('admindetails'));
     }
@@ -28,6 +31,7 @@ class AdminController extends Controller
               }
              }
     public  function update_current_password(Request $request){
+
          if($request->isMethod('post')){
              $data =$request->all();
          if(Hash::check($data['current_password'],Auth::guard('admin')->user()->getAuthPassword())){
@@ -44,8 +48,10 @@ class AdminController extends Controller
           }else{
          Session()->flash('wrong_password','Your current Password is wrong');
           return redirect()->back();
-          }   }  }
+          }   }
+    }
     public  function update_admin_details(Request $request){
+        Session::put('page','update_admin_details');
         if($request->isMethod('post')){
             $data =$request->all();
             $rules = [
@@ -56,19 +62,28 @@ class AdminController extends Controller
 
             $this->validate($request, $rules, __('validation'));
             //upload image
-            if ($request->hasFile('image')) {
+            if ($request->hasFile('admin_image')) {
                 //  Let's do everything here
-             $img_tmp =$request->file('image');
+             $img_tmp = $request->file('admin_image');
            if ($img_tmp->isValid()) {
+              //get image extension
+               $extension =$img_tmp->getClientOriginalExtension();
+               //generate new image name
+               $imageName =rand(111,9999).".".$extension;
+               $imagePath = '/images/adminLTE_img/admin_photos/'.$imageName;
+               // upload image
+               Image::make($img_tmp)->resize(300,400)->save(public_path($imagePath));
 
-
-                }
-
-            }
-             Admin::where('email',Auth::guard('admin')->user()->email)->update([
-                 'name'=>$data['admin_name'],'mobile'=>$data['admin_number']
-             ]);
-             Session::flash('success_message','Admin message updated succesfully');
+                } elseif(!empty($data['current_admin_image'])){
+                 $imageName = $data['current_admin_image'];
+                      }
+                    else
+                     {
+                  $imageName ="";
+                        }
+                  }
+      Admin::where('email',Auth::guard('admin')->user()->email)->update(['name'=>$data['admin_name'],'mobile'=>$data['admin_number'],'image'=>$imageName ]);
+         Session::flash('success_message','Admin message updated succesfully');
         }
        return view('admin.update_admin_details');
               }
