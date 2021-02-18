@@ -6,6 +6,14 @@
     <title>AdminLTE 3 | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+      <!-- DataTables -->
+    <link rel="stylesheet" href="{{url('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+    <!-- Theme style -->
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{url('plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Ionicons -->
@@ -93,5 +101,27 @@
 <script src="{{url('js/adminLTE_js/demo.js')}}"></script>
 <!-- Custom Admin js  -->
 <script src="{{url('js/adminLTE_js/admin_scripts.js')}}"></script>
+<!-- sweet alert   -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- DataTables  & Plugins -->
+<script src="{{url('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{url('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{url('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{url('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{url('plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{url('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{url('plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{url('plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{url('plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{url('plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{url('plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{url('plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+<script>
+  $(function(){
+     $("#sections").DataTable();
+     $("#categories").DataTable();
+    })
+</script>
 </body>
 </html>

@@ -77,11 +77,11 @@ class AdminController extends Controller
                 } elseif(!empty($data['current_admin_image'])){
                  $imageName = $data['current_admin_image'];
                       }
-                    else
-                     {
-                  $imageName ="";
-                        }
-                  }
+
+                  }  else
+            {
+                $imageName ="";
+            }
       Admin::where('email',Auth::guard('admin')->user()->email)->update(['name'=>$data['admin_name'],'mobile'=>$data['admin_number'],'image'=>$imageName ]);
          Session::flash('success_message','Admin message updated succesfully');
         }

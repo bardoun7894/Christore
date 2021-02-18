@@ -13,7 +13,10 @@ return [
     |
     */
     //admins validation
-    'admin_name'=>'name is invalid',
+    'admin_name'=>'The :attribute is invalid',
+    'category_name'=>'The :attribute is invalid',
+    'section_id' => 'Section is required',
+    'category_image' =>'The :attribute is required',
     'admin_number'=>'mobile number is required',
     'accepted' => 'The :attribute must be accepted.',
     'active_url' => 'The :attribute is not a valid URL.',

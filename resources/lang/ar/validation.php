@@ -13,6 +13,7 @@ return [
     */
      //admins validation
     'admin_name'=>'name is invalid',
+    'category_name'=>'category name is invalid',
     'admin_number'=>'رقم الهاتف المطلوب',
     'accepted'             => 'يجب قبول :attribute.',
     'active_url'           => ':attribute لا يُمثّل رابطًا صحيحًا.',

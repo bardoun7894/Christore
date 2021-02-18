@@ -26,18 +26,17 @@
                     <p>Dashboard</p>
                </a>
             </li>
-               @if(Session()->get('page')=="settings"|| Session()->get('page')=="update_admin_details")
+
+             @if(Session()->get('page')=="settings"|| Session()->get('page')=="update_admin_details")
                         <?php   $active = "active"  ?>
                    @else
                         <?php   $active = ""  ?>
                     @endif
-
-            <li class="nav-item has-treeview menu-open">
+              <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link  {{$active}}">
                     <i class="nav-icon fas fa-th"></i>
                     <p> Settings <i class="right fas fa-angle-left"></i></p>
                 </a>
-
 
                 <ul class="nav nav-treeview ">
 
@@ -64,6 +63,47 @@
                             <p>admin Details</p>
                         </a>
                     </li>
+                </ul>
+            </li>
+
+           @if(Session()->get('page')=="sections" || Session()->get('page')=="categories")
+                 <?php   $active = "active"  ?>
+            @else
+                  <?php   $active = ""  ?>
+           @endif
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link  {{$active}}">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p> catalogues <i class="right fas fa-angle-left"></i></p>
+                </a>
+
+                <ul class="nav nav-treeview ">
+
+
+                    <li class="nav-item">
+
+                        @if(Session()->get('page')=="sections")
+                            <?php   $active = "active"  ?>
+                        @else
+                            <?php   $active = ""  ?>
+                        @endif
+                        <a href="{{url('/admin/section')}}" class="nav-link {{$active}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>sections</p>
+                        </a>
+                    </li>
+
+                     <li class="nav-item">
+                            @if(Session()->get('page')=="categories")
+                                <?php  $active = "active" ?>
+                            @else
+                                <?php  $active = ""  ?>
+                            @endif
+                            <a href="{{url('/admin/categories')}}" class="nav-link {{$active}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Categories</p>
+                            </a>
+                        </li>
                 </ul>
             </li>
 
