@@ -25,9 +25,7 @@ return [
     | services the application utilizes. Set this in your ".env" file.
     |
     */
-
     'env' => env('APP_ENV', 'production'),
-
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -38,8 +36,7 @@ return [
     | application. If disabled, a simple generic error page is shown.
     |
     */
-
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +49,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL','http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -90,7 +87,6 @@ return [
     | the language folders that are provided through your application.
     |
     */
-
     'fallback_locale' => 'en',
 
     /*
@@ -224,7 +220,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
     ],
 
 ];

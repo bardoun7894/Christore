@@ -12,9 +12,11 @@ return [
     |
     */
      //admins validation
-    'admin_name'=>'name is invalid',
-    'category_name'=>'category name is invalid',
+    'admin_name'=>'الاسم مطلوب',
+    'category_name'=>'اسم التصنيف مطلوب',
     'admin_number'=>'رقم الهاتف المطلوب',
+    'section_id' => 'الفرع مطلوب',
+    'category_image' =>'The :attribute مطلوب',
     'accepted'             => 'يجب قبول :attribute.',
     'active_url'           => ':attribute لا يُمثّل رابطًا صحيحًا.',
     'after'                => 'يجب على :attribute أن يكون تاريخًا لاحقًا للتاريخ :date.',

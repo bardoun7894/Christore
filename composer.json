@@ -15,7 +15,9 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.1"
+        "laravel/ui": "^3.1",
+        "mcamara/laravel-localization": "^1.6",
+      "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

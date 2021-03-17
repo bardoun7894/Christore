@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -22,7 +23,6 @@ class CategoryController extends Controller
     public function updateCategoryStatus(Request $request){
         if ($request->ajax()){
             $data= $request->all();
-
            if($data['status']==="active")
               {
                 $status =0;
@@ -31,8 +31,8 @@ class CategoryController extends Controller
               {
                 $status =1;
               }
-       Category::where('id',$data['category_id'])->update(['status'=>$status]);
-            return response()->json(['status'=>$status,'category_id'=>$data['category_id']]);
+         Category::where( 'id', $data['category_id'] ) -> update([ 'status' => $status ]);
+         return response()->json( [ 'status'=>$status , 'category_id' => $data['category_id'] ]);
         }
     }
     public function addEditCategory(Request $request,$id = null ){
@@ -72,8 +72,8 @@ class CategoryController extends Controller
             ];
             $this->validate($request, $rules, __('validation'));
              $category->parent_id = $data['parent_id'];
-             $category->section_id =   $data['section_id'];
-             $category->category_name =   $data['category_name'];
+             $category->section_id =  $data['section_id'];
+             $category->category_name =  $data['category_name'];
              $category->category_discount =  $data['category_discount'];
              $category->description =   $data['description'];
              $category->url =  $data['url'];
@@ -110,9 +110,9 @@ class CategoryController extends Controller
        if($request->ajax()){
           $data = $request->all();
           $getCategories =Category::with('subcategories')->where(['section_id'=>$data['section_id'],'parent_id'=>0,'status'=>1])->get();
-      //   $getCategories = json_decode(json_encode($getCategories),true);
-//         echo "<pre>";print_r($getCategories);die();
-            return view('admin.categories.append_categories_level')->with(compact('getCategories'));
+         $getCategories = json_decode(json_encode($getCategories),true);
+//       echo "<pre>";print_r($getCategories);die();
+          return view('admin.categories.append_categories_level')->with(compact('getCategories'));
           }
     }
     public function deleteCategoryImage($id){
@@ -123,13 +123,13 @@ class CategoryController extends Controller
          unlink($categoryImagePath.$categoryImage->category_image);
       }
      Category::where('id',$id)->update(['category_image'=>'']);
-      return redirect()->back()->with('flash_message_success','Category Image has been deleted Successfully');
+      return redirect()->back()->with('flash_message_success',__('messages.delete_image_category'));
     }
-    public function deleteCategory($id){
-      $message = "category has deleted succesfully";
-     Category::where('id',$id)->delete();
-       Session()->flash("success_message",$message);
-     return redirect()->back()->with('flash_message_success','Category Image has been deleted Successfully');
 
+    public function deleteCategory($id){
+      $message =   __('messages.delete_category');
+     Category::where('id',$id)->delete();
+//     Session()->flash("success_message",$message);
+     return redirect()->back()->with("success_message",$message);
     }
 }

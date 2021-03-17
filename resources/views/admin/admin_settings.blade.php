@@ -39,7 +39,7 @@
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form role="form" method="post" action="{{url('/admin/update_current_password')}}" enctype="multipart/form-data" name="updatePasswordForm" id="updatePasswordForm">@csrf
+            <form role="form" method="post" action="{{url(LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale())) }}" enctype="multipart/form-data" name="updatePasswordForm" id="updatePasswordForm">@csrf
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Admin Email</label>

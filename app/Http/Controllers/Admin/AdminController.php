@@ -12,26 +12,28 @@ use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
-
     public  function dashboard(){
-        Session::put('page','dashboard');
-        return view('admin.admin_dashboard');
+      Session::put('page','dashboard');
+        $admins_counts=  Admin::all()->count();
+        return view('admin.admin_dashboard')->with(compact("admins_counts"));
     }
     public  function settings(){
-        Session::put('page','settings');
-    $admindetails =  Auth::guard('admin')->user() ;
-        return view('admin.admin_settings')->with(compact('admindetails'));
+
+     Session::put('page','settings');
+     $admindetails =  Auth::guard('admin')->user() ;
+     return view('admin.admin_settings')->with(compact('admindetails'));
     }
     public  function check_current_password(Request $request){
+
        $data =$request->all();
       if(Hash::check($data['currentPassword'],Auth::guard('admin')->user()->getAuthPassword())){
            return "true";
              }else{
            return "false" ;
               }
-             }
-    public  function update_current_password(Request $request){
 
+      }
+    public  function update_current_password(Request $request){
          if($request->isMethod('post')){
              $data =$request->all();
          if(Hash::check($data['current_password'],Auth::guard('admin')->user()->getAuthPassword())){
@@ -44,17 +46,18 @@ class AdminController extends Controller
                Session()->flash('wrong_password','Your Passwords not matches');
                return redirect()->back();
              }
-
           }else{
          Session()->flash('wrong_password','Your current Password is wrong');
           return redirect()->back();
           }   }
     }
+
     public  function update_admin_details(Request $request){
         Session::put('page','update_admin_details');
         if($request->isMethod('post')){
             $data =$request->all();
-            $rules = [
+            $rules =
+                [
            'admin_name' => 'required|regex:/^[\pL\s\-]+$/u',
            'admin_number' => 'required|numeric',
            'image' => 'image|max:10000' // max 10000kb
@@ -86,29 +89,45 @@ class AdminController extends Controller
          Session::flash('success_message','Admin message updated succesfully');
         }
        return view('admin.update_admin_details');
+
               }
     public  function login(Request $request){
-
         if($request->isMethod('post')){
-            $rules =[
-               'email'=>'required|email|max:255',
-                'password'=>'required|min:8'
-               ];
-            $this->validate($request,$rules,__('validation'));
-            $data =$request->all();
-     if(Auth::guard('admin')->attempt(['email'=>$data['email'],'password'=>$data['password']])){
-            return redirect('admin/dashboard');
-       }else{
+
+            $messages=$this->getMessages();
+            $rules =$this->getRules();
+          $this->validate($request,$rules,$messages);
+          $data =$request->all();
+        if(Auth::guard('admin')->attempt(['email'=>$data['email'],'password'=>$data['password']])){
+            return redirect('/admin/dashboard');
+           }else{
          Session::flash('error_message','invalid email or password');
         return  redirect()->back();
-     }
+         }
         }
         return view('admin.admin_login');
-}
-    public  function logout(){
-  Auth::guard('admin')->logout();
-  return redirect('/admin');
-}
+    }
+
+   public  function logout(){
+     Auth::guard('admin')->logout();
+     return redirect('/admin');
+   }
+
+    private function getMessages()
+    {
+       return  [
+            'email.required'=> __('messages.email.required'),
+            'password.required'=> __('messages.password.required')
+        ];
+    }
+
+    private function getRules()
+    {
+     return  [
+            'email'=>'required|email|max:255',
+            'password'=>'required|min:8'
+        ];
+    }
 
 
 }

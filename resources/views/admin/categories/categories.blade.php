@@ -1,12 +1,17 @@
 @extends('layouts.adminLTE_layout.adminLTE_layout')
 @section('content')
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Categories</h1>
+                        <h1 >Categories</h1>
+{{--                        <button class="btn-danger" onclick="getRes()"> getResponse</button>--}}
+                        <div>
+                            <p id="show" ></p>
+                        </div>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -54,7 +59,7 @@
                                         <th>category</th>
                                         <th>url</th>
                                         <th>status</th>
-                                        <th>edit</th>
+                                        <th>Actions</th>
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -84,9 +89,9 @@
                                                 </td>
                                                 <td>
                                         @if($category->status==1)
-                                            <a class="updateCategoryStatus" id="category-{{$category->id}}" category_id="{{$category->id}}" href="javascript:void(0)" style="color: dodgerblue">active</a>
-                                              @else
-                                            <a class="updateCategoryStatus" id="category-{{$category->id}}"  category_id="{{$category->id}}" href="javascript:void(0)"  style="color: grey">inactive</a>
+                                          <a class="updateCategoryStatus" id="category-{{$category->id}}" category_id="{{$category->id}}" href="javascript:void(0)" style="color: dodgerblue">active</a>
+                                                 @else
+                                          <a class="updateCategoryStatus" id="category-{{$category->id}}"  category_id="{{$category->id}}" href="javascript:void(0)"  style="color: grey">inactive</a>
                                         @endif
                                                 </td>
                                                 <td>

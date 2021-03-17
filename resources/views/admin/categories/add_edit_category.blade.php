@@ -6,12 +6,10 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Advanced Form</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Advanced Form</li>
                         </ol>
                     </div>
                 </div>
@@ -47,9 +45,9 @@
 
                         <form name="categoryForm" method="post" enctype="multipart/form-data" id="category_form"
                           @if(empty($categoryData->id))
-                              action ="{{ url('/admin/add-edit-category') }}"
+                              action ="{{url(LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale())) }}"
                            @else
-                              action ="{{ url('/admin/add-edit-category/'.$categoryData->id) }}"
+                              action ="{{ url(LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale())) }}"
                           @endif >@csrf
                             <div class="row">
                                 <div class="col-md-6">
