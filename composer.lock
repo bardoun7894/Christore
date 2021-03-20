@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93c4e4d90d518c3535b868f66cf33881",
+    "content-hash": "4bc831e4be497bbf4ec28ce6cc2af2f9",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5499,19 +5499,20 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.0.1",
+            "version": "v1.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "7457004969dd62fa727fbc596bb2accccb1409a5"
+                "reference": "66b26181c3e86266b0b98f45a3398b090f37dee9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/7457004969dd62fa727fbc596bb2accccb1409a5",
-                "reference": "7457004969dd62fa727fbc596bb2accccb1409a5",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/66b26181c3e86266b0b98f45a3398b090f37dee9",
+                "reference": "66b26181c3e86266b0b98f45a3398b090f37dee9",
                 "shasum": ""
             },
             "require": {
+                "illuminate/console": "^8.0|^9.0",
                 "illuminate/contracts": "^8.0|^9.0",
                 "illuminate/support": "^8.0|^9.0",
                 "php": "^7.3|^8.0"
@@ -5554,7 +5555,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2020-12-22T17:36:59+00:00"
+            "time": "2021-03-16T16:28:57+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -7552,7 +7553,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.3|^8.0",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"

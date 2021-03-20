@@ -49,6 +49,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
                 Route::match(['get', 'post'], 'add-edit-category/{id?}', [CategoryController::class, 'addEditCategory']);
                 Route::match(['get', 'post'], 'add-edit-product/{id?}',[ProductController::class, 'addEditProduct']);
                 Route::get('delete-category-image/{id?}', [CategoryController::class, 'deleteCategoryImage']);
+                Route::get('delete-product-image/{id?}', [ProductController::class, 'deleteProductImage']);
                 Route::get('delete-category/{id?}', [CategoryController::class, 'deleteCategory']);
                 Route::get('delete-product/{id?}', [ProductController::class, 'deleteProduct' ]);
 

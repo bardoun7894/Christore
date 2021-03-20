@@ -103,7 +103,7 @@
                                             @foreach($getSections as $getSection)
                                                 <option value="{{$getSection->id}}"
                                                 @if(!empty($categoryData['section_id']) && $categoryData['section_id'] == $getSection->id))  selected @endif
-                                             >{{$getSection->name}}</option>
+                                                  >{{$getSection->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

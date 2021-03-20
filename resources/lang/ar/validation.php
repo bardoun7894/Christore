@@ -14,6 +14,8 @@ return [
      //admins validation
     'admin_name'=>'الاسم مطلوب',
     'category_name'=>'اسم التصنيف مطلوب',
+    'product_name'=>'اسم المنتج مطلوب',
+
     'admin_number'=>'رقم الهاتف المطلوب',
     'section_id' => 'الفرع مطلوب',
     'category_image' =>'The :attribute مطلوب',

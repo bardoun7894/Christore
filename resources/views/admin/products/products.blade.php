@@ -39,7 +39,7 @@
                             <div class="card-header " >
                                 <div>
                                     <h3 class="card-title flex">{{__('messages.products')}}</h3>
-                                    <a href="{{url(LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale()))}}" class="bg-blue-500 rounded-lg font-bold text-white text-center px-2 py-1 transition duration-300 ease-in-out hover:bg-blue-600 mr-6 float-right">
+                                    <a href="{{url('admin/add-edit-product')}}" class="bg-blue-500 rounded-lg font-bold text-white text-center px-2 py-1 transition duration-300 ease-in-out hover:bg-blue-600 mr-6 float-right">
                                        {{__('messages.add_product')}}
                                     </a>
                                 </div>
@@ -59,17 +59,18 @@
                                   dir="rtl"
                                  @endif
                             >
-                               <table id="products" class="table table-bordered table-striped">
+                               <table id="products" class="table table-striped">
                                     <thead>
                                        <tr>
-                                        <th>{{__('messages.id')}}</th>
-                                        <th>{{__('messages.category')}}</th>
-                                        <th>{{__('messages.section')}}</th>
-                                        <th>{{__('messages.product')}}</th>
-                                        <th> {{__('messages.product_code')}}</th>
-                                        <th>{{__('messages.product_color')}}</th>
-                                        <th>{{__('messages.status')}}</th>
-                                        <th>{{__('messages.actions')}}</th>
+                                        <th scope="col">#</th>
+                                        <th scope="col">{{__('messages.category')}}</th>
+                                        <th scope="col">{{__('messages.section')}}</th>
+                                        <th scope="col">{{__('messages.product')}}</th>
+                                        <th scope="col">{{__('messages.image')}}</th>
+                                        <th scope="col"> {{__('messages.product_code')}}</th>
+                                        <th scope="col">{{__('messages.product_color')}}</th>
+                                        <th scope="col">{{__('messages.status')}}</th>
+                                        <th scope="col">{{__('messages.actions')}}</th>
                                        </tr>
                                     </thead>
                                     <tbody>
@@ -85,6 +86,11 @@
                                                     {{$product->section->name}}
                                                 </td>  <td style="color: grey">
                                                     {{$product->product_name}}
+                                                </td>
+                                                <td style="color: grey">
+                                                    @if(!empty($product->main_image))
+                                                        <img width="150" height="400" src=" {{asset('images/product_image/'.$product->main_image)}}">
+                                                    @endif
                                                 </td>
                                                 <td style="color: grey">
                                                     {{$product->product_code}}

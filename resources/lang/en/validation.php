@@ -15,6 +15,7 @@ return [
     //admins validation
     'admin_name'=>'The :attribute is invalid',
     'category_name'=>'The :attribute is invalid',
+    'product_name'=>'the product name is required',
     'section_id' => 'Section is required',
     'category_image' =>'The :attribute is required',
     'admin_number'=>'mobile number is required',

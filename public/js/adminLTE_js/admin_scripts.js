@@ -138,6 +138,8 @@ $(document).ready(function () {
    $(".confirmDeleteImage").click(function (){
       var record =$(this).attr("record");
       var recordid = $(this).attr("recordid");
+      var recordName = $(this).attr("recordName");
+
        Swal.fire({
            title: 'Are you sure?',
            text: "You won't be able to revert this!",
@@ -153,10 +155,49 @@ $(document).ready(function () {
                    'Your file has been deleted.',
                    'success'
                  )
-             window.location.href ="/admin/delete-category-"+record+"/"+recordid;
+             window.location.href ="/admin/delete-"+recordName+"-"+record+"/"+recordid;
            }
        })
    });
+
+
+
+
+
+
+
+
+
+ const inpfile=document.getElementById('main_image');
+ const previewContainer=document.getElementById('image_preview');
+ const previewImage=previewContainer.querySelector('.image_preview_image');
+ const impo=previewContainer.querySelector('.impo');
+ const previewtext=previewContainer.querySelector('.image_preview_default_text');
+    if(inpfile){
+        inpfile.addEventListener('change',function (){
+            const file =this.files[0];
+           if(file){
+               const reader =new FileReader();
+               previewtext.style.display="none";
+               previewImage.style.display="block"
+
+               reader.addEventListener('load',function (){
+                   previewImage.setAttribute('src',this.result);
+                   impo.style.display = "none"
+               })
+
+
+               reader.readAsDataURL(file);
+           }else{
+               previewtext.style.display = null;
+               previewImage.style.display=null;
+               previewImage.setAttribute('src',"");
+
+           }
+        });
+    }
+
+
 
 
 });
