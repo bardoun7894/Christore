@@ -36,21 +36,16 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                       @if($errors->any())
-                            <div class="alert alert-danger" role="alert">
+                            <div class="alert alert-danger" dir="rtl" role="alert">
                                 @foreach ($errors->all() as $message)
                                     <li>{{$message}}</li>
                                 @endforeach
                             </div>
                       @endif
                         <form name="categoryForm" method="post" enctype="multipart/form-data" id="category_form"
-{{--                       @if(empty($productData->id))--}}
-{{--                              action ="{{url(LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale())) }}"--}}
-{{--                       @else--}}
-{{--                              action ="{{ url(LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale())) }}"--}}
-{{--                          @endif --}}
                         > @csrf
-        <div class="row">
-         <div class="col-md-6">
+        <div class="row" >
+         <div class="col-md-6" >
              <label>{{__("messages.section")}}</label>
                             <select id="section_id" name="section_id" class="form-control select2" style="width: 100%;">
                                      <option selected="selected" value="">Select</option>
@@ -184,30 +179,35 @@
              </div>
              <div class="form-group">
                  <label for="exampleInputFile">{{__('messages.image')}}</label>
+
                  <div class="input-group">
                      <div class="custom-file">
                          <input  type="file" name="main_image"   id="main_image"
                                 @if(!empty($productData['main_image']))
                                 value = "{{$productData['main_image']}}"
                                   @else
-                                value ="{{old('main_image')}}"
+                                 value ="{{old('main_image')}}"
                              @endif >
                          <label class="custom-file-label" for="main_image">Choose file</label>
                      </div>
                  </div>
+
                  <div class="image_preview " id="image_preview" style="width: 300px; height: 400px; border: 2px; ">
                      <span class="image_preview_default_text">Image Preview</span>
-                     @if(!empty($productData['main_image']))
-                         <div style="height:80px;" class="d-inline m-3" >
-                             <img style="width: 150px" class="impo" src="{{asset("images/product_image/".$productData['main_image'])}}"  alt="po">
-                             &nbsp;
-                             <a href="javascript:void(0)" class="confirmDeleteImage" record="image" recordName="product" recordid="{{$productData['id']}}" style="color: red">Delete image</a>
+
+                         <div style="height:80px;" >
+                             <img style="width: 150px"  class="image_preview_image"
+                             @if(!empty($productData['main_image']))
+                                  src="{{asset("images/product_image/".$productData['main_image'])}}"
+                             @else
+                                 src="{{asset("images/no-image.png")}}"
+                             @endif >
+                             @if(!empty($productData['main_image']))
+                                 <a href="javascript:void(0)" class="confirmDeleteImage" record="image" recordName="product" recordid="{{$productData['id']}}" style="color: red">Delete image</a>
+                             @endif
+
                          </div>
-                     @endif
-                        <div>
-                             <img style="width: 150px" class="image_preview_image"
-                                  alt="poyu" src="">
-                         </div>
+
                  </div>
              </div>
          </div>

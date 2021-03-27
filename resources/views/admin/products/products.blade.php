@@ -59,7 +59,7 @@
                                   dir="rtl"
                                  @endif
                             >
-                               <table id="products" class="table table-striped">
+                               <table id="products" class="table table-striped" style="min-width: 562px">
                                     <thead>
                                        <tr>
                                         <th scope="col">#</th>
@@ -90,6 +90,8 @@
                                                 <td style="color: grey">
                                                     @if(!empty($product->main_image))
                                                         <img width="150" height="400" src=" {{asset('images/product_image/'.$product->main_image)}}">
+                                                    @else
+                                                        <img width="150" height="400" src=" {{asset('images/no-image.png')}}">
                                                     @endif
                                                 </td>
                                                 <td style="color: grey">
@@ -105,11 +107,13 @@
                                                       <a class="updateProductStatus" id="product-{{$product->id}}"  product_id="{{$product->id}}" href="javascript:void(0)"  style="color: grey">inactive</a>
                                                     @endif
                                                 </td>
-
                                                 <td>
-                                                  <a style="color: mediumseagreen" href="{{url('/admin/add-edit-product/'.$product->id)}}">{{__('messages.edit')}}</a>
+                                                    <a  title="add attributes"  href="{{url('/admin/move-add-attributes/'.$product->id)}}"> <i class="fas fa-plus"></i></a>
                                                     &nbsp;&nbsp;&nbsp;
-                                                  <a  class="confirmDelete" record="product" recordid="{{$product->id}}" style="color: red"  href="javascript:void(0)" > {{__('messages.delete')}} </a>
+                                                  <a style="color: mediumseagreen" title="edit products" href="{{url('admin/add-edit-product/'.$product->id)}}"><i class="far fa-edit"></i></a>
+                                                       &nbsp;&nbsp;&nbsp;{{$product->id}}
+                                                  <a  class="confirmDelete" title="remove product" record="product" recordid="{{$product->id}}" style="color: red"   href="javascript:void(0)" >
+                                                      <i class="far fa-trash-alt"> </i></a>
                                                   </td>
                                             </tr>
                                             @endforeach

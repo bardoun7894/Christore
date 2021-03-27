@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
-use \App\Http\Controllers\Admin\SectionController;
+use \App\Http\Controllers\Admin\SectionController ;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -48,10 +50,17 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
                 Route::post('append-category-level', [CategoryController::class, 'appendCategoryLevel']);
                 Route::match(['get', 'post'], 'add-edit-category/{id?}', [CategoryController::class, 'addEditCategory']);
                 Route::match(['get', 'post'], 'add-edit-product/{id?}',[ProductController::class, 'addEditProduct']);
+                Route::match(['get', 'post'], 'move-add-attributes/{id}',[ProductAttributeController::class, 'moveaddAttributes']);
                 Route::get('delete-category-image/{id?}', [CategoryController::class, 'deleteCategoryImage']);
                 Route::get('delete-product-image/{id?}', [ProductController::class, 'deleteProductImage']);
                 Route::get('delete-category/{id?}', [CategoryController::class, 'deleteCategory']);
                 Route::get('delete-product/{id?}', [ProductController::class, 'deleteProduct' ]);
+
+            //add end update attribute to product
+            Route::match(['get', 'post'], 'add-attributes/{id}',[ProductAttributeController::class, 'addAttributes']);
+            Route::post('edit-attribute/{id}',[ProductAttributeController::class, 'EditProductAttributes']);
+            Route::get('delete-attribute/{id?}', [ProductAttributeController::class, 'deleteProductAttribute' ]);
+            Route::post('update-attribute-status', [ProductAttributeController::class, 'updateAttributeStatus']);
 
 
         });
@@ -59,3 +68,4 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         });
 
 });
+

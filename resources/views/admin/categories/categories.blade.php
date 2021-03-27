@@ -8,10 +8,6 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 >Categories</h1>
-{{--                        <button class="btn-danger" onclick="getRes()"> getResponse</button>--}}
-                        <div>
-                            <p id="show" ></p>
-                        </div>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">

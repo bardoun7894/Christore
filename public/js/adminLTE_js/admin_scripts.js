@@ -71,8 +71,6 @@ $(document).ready(function () {
    $('.updateProductStatus').click(function(){
       var product_id = $(this).attr('product_id');
       var status = $(this).text();
-      console.log('status'+status)
-      console.log('product_id'+product_id)
       $.ajax(
           {
             type:'post',
@@ -95,6 +93,26 @@ $(document).ready(function () {
             )
    });
 
+   $('.updateAttributeStatus').click(function (){
+     var attr_id = $(this).attr('attr_id')
+     var status = $(this).text();
+       $.ajax({
+           type:'post',
+           data:{attr_id:attr_id,status:status},
+           url:'/'+localization+'/admin/update-attribute-status',
+           success:function (resp){
+               if(resp['status']===1){
+                   $("#attr-"+attr_id).html("  <a class='updateAttributeStatus' href='javascript:void(0)' style='color: dodgerblue'>active</a>")
+               }else{
+                   $("#attr-"+attr_id).html("  <a class='updateAttributeStatus' href='javascript:void(0)' style='color: grey'>inactive</a>")
+               }
+
+           },
+
+       })
+
+
+   });
    $('#section_id').change((function (){
        var section_id = $(this).val()
        $.ajax({
@@ -139,7 +157,6 @@ $(document).ready(function () {
       var record =$(this).attr("record");
       var recordid = $(this).attr("recordid");
       var recordName = $(this).attr("recordName");
-
        Swal.fire({
            title: 'Are you sure?',
            text: "You won't be able to revert this!",
@@ -160,43 +177,51 @@ $(document).ready(function () {
        })
    });
 
+    // (1) add remove fields automatically
+    var maxField = 10; //Input fields increment limitation
+    var addButton = $('.add_button'); //Add button selector
+    var wrapper = $('.field_wrapper'); //Input field wrapper
+    var fieldHTML = '<div style="margin-top: 10px">   <input type="text" id="size" name="size[]"  value="" placeholder="Size" style="width:  80px"/>\n' +
+        '                                     <input type="text" id="sku" name="sku[]"   value="" placeholder="Sku"  style="width:   80px"/>\n' +
+        '                                     <input type="text" id="price" name="price[]" value="" placeholder="Price" style="width: 80px"/>\n' +
+        '                                     <input type="text" id="stock"  name="stock[]" value="" placeholder="Stock" style="width: 80px"/>\n<a href="javascript:void(0);" class="remove_button fas fa-minus"> </a></div>'; //New input field html
+    var x = 1; //Initial field counter is 1
 
+    //Once add button is clicked
+    $(addButton).click(function(){
+        //Check maximum number of input fields
+        if(x < maxField){
+            x++; //Increment field counter
+            $(wrapper).append(fieldHTML); //Add field html
+        }
+    });
+    //Once remove button is clicked
+    $(wrapper).on('click', '.remove_button', function(e){
+        e.preventDefault();
+        $(this).parent('div').remove(); //Remove field html
+        x--; //Decrement field counter
+    });
 
-
-
-
-
-
-
+    // (2) display current image in products
  const inpfile=document.getElementById('main_image');
  const previewContainer=document.getElementById('image_preview');
  const previewImage=previewContainer.querySelector('.image_preview_image');
- const impo=previewContainer.querySelector('.impo');
  const previewtext=previewContainer.querySelector('.image_preview_default_text');
-    if(inpfile){
+  if(inpfile){
         inpfile.addEventListener('change',function (){
             const file =this.files[0];
            if(file){
                const reader =new FileReader();
-               previewtext.style.display="none";
-               previewImage.style.display="block"
-
+               console.log(file);
+               previewtext.style.display  = "none";
+               previewImage.style.display = "block"
                reader.addEventListener('load',function (){
-                   previewImage.setAttribute('src',this.result);
-                   impo.style.display = "none"
+                  previewImage.setAttribute('src',this.result);
                })
-
-
                reader.readAsDataURL(file);
-           }else{
-               previewtext.style.display = null;
-               previewImage.style.display=null;
-               previewImage.setAttribute('src',"");
-
            }
         });
     }
-
 
 
 

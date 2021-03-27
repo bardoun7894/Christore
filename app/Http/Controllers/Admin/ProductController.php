@@ -32,7 +32,7 @@ class ProductController extends Controller
             $getProducts =  Product::all();
             $product = Product::find($id);
             $message = "product updated successfully";
-        }
+             }
         $getCategories = Category::all();
         if($request->isMethod('post')){
 
