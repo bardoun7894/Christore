@@ -16,5 +16,11 @@ class Product extends Model
     public function section(){
         return $this->belongsTo(Section::class,'section_id');
     }
+    public function attributes(){
+        return $this->hasMany(ProductAttribute::class);
+    }
+    public function images(){
+        return $this->hasMany(ProductImage::class);
+    }
 
 }

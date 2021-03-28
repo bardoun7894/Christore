@@ -89,7 +89,7 @@
                                                 </td>
                                                 <td style="color: grey">
                                                     @if(!empty($product->main_image))
-                                                        <img width="150" height="400" src=" {{asset('images/product_image/'.$product->main_image)}}">
+                                                        <img width="150" height="400" src=" {{asset('images/product_image/small/'.$product->main_image)}}">
                                                     @else
                                                         <img width="150" height="400" src=" {{asset('images/no-image.png')}}">
                                                     @endif
@@ -110,8 +110,10 @@
                                                 <td>
                                                     <a  title="add attributes"  href="{{url('/admin/move-add-attributes/'.$product->id)}}"> <i class="fas fa-plus"></i></a>
                                                     &nbsp;&nbsp;&nbsp;
+                                                    <a  title="add attributes"  href="{{url('/admin/add-images/'.$product->id)}}"> <i class="fas fa-plus-circle"></i></a>
+                                                    &nbsp;&nbsp;&nbsp;
                                                   <a style="color: mediumseagreen" title="edit products" href="{{url('admin/add-edit-product/'.$product->id)}}"><i class="far fa-edit"></i></a>
-                                                       &nbsp;&nbsp;&nbsp;{{$product->id}}
+                                                       &nbsp;&nbsp;&nbsp;
                                                   <a  class="confirmDelete" title="remove product" record="product" recordid="{{$product->id}}" style="color: red"   href="javascript:void(0)" >
                                                       <i class="far fa-trash-alt"> </i></a>
                                                   </td>

@@ -113,6 +113,26 @@ $(document).ready(function () {
 
 
    });
+   $('.updateProductImageStatus').click(function (){
+     var product_image_id = $(this).attr('product-image_id')
+     var status = $(this).text();
+       $.ajax({
+           type:'post',
+           data:{product_image_id:product_image_id,status:status},
+           url:'/'+localization+'/admin/update-product-image-status',
+           success:function (resp){
+               if(resp['status']===1){
+                   $("#product-image-"+product_image_id).html("  <a class='updateProductImageStatus' href='javascript:void(0)' style='color: dodgerblue'>active</a>")
+               }else{
+                   $("#product-image-"+product_image_id).html("  <a class='updateProductImageStatus' href='javascript:void(0)' style='color: grey'>inactive</a>")
+               }
+
+           },
+
+       })
+
+
+   });
    $('#section_id').change((function (){
        var section_id = $(this).val()
        $.ajax({
@@ -203,7 +223,7 @@ $(document).ready(function () {
     });
 
     // (2) display current image in products
- const inpfile=document.getElementById('main_image');
+ const inpfile=document.getElementById('product_image');
  const previewContainer=document.getElementById('image_preview');
  const previewImage=previewContainer.querySelector('.image_preview_image');
  const previewtext=previewContainer.querySelector('.image_preview_default_text');
@@ -216,6 +236,7 @@ $(document).ready(function () {
                previewtext.style.display  = "none";
                previewImage.style.display = "block"
                reader.addEventListener('load',function (){
+                   console.log(this.result);
                   previewImage.setAttribute('src',this.result);
                })
                reader.readAsDataURL(file);

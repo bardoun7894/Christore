@@ -62,6 +62,15 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
             Route::get('delete-attribute/{id?}', [ProductAttributeController::class, 'deleteProductAttribute' ]);
             Route::post('update-attribute-status', [ProductAttributeController::class, 'updateAttributeStatus']);
 
+            //add images
+            Route::match(['get', 'post'], 'add-images/{id}',[ProductController::class, 'addImages']);
+            //delete product image from product_images
+            Route::get('delete-product-image/{id?}', [ProductController::class, 'deleteProductImages' ]);
+            //update product image status
+            Route::post('update-product-image-status', [ProductController::class, 'updateProductImageStatus']);
+
+
+
 
         });
 

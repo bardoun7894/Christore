@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +16,8 @@ class AdminController extends Controller
     public  function dashboard(){
       Session::put('page','dashboard');
         $admins_counts=  Admin::all()->count();
-        return view('admin.admin_dashboard')->with(compact("admins_counts"));
+        $products =Product::all()->count();
+        return view('admin.admin_dashboard')->with(compact(["admins_counts","products"]));
     }
     public  function settings(){
 
@@ -24,11 +26,12 @@ class AdminController extends Controller
      return view('admin.admin_settings')->with(compact('admindetails'));
     }
     public  function check_current_password(Request $request){
-
        $data =$request->all();
       if(Hash::check($data['currentPassword'],Auth::guard('admin')->user()->getAuthPassword())){
            return "true";
-             }else{
+             }
+             else
+             {
            return "false" ;
               }
 

@@ -42,8 +42,7 @@
                                 @endforeach
                             </div>
                       @endif
-                        <form name="categoryForm" method="post" enctype="multipart/form-data" id="category_form"
-                        > @csrf
+                  <form name="ProductForm" method="post"  enctype="multipart/form-data" id="ProductForm" > @csrf
         <div class="row" >
          <div class="col-md-6" >
              <label>{{__("messages.section")}}</label>
@@ -181,27 +180,28 @@
                  <label for="exampleInputFile">{{__('messages.image')}}</label>
 
                  <div class="input-group">
-                     <div class="custom-file">
-                         <input  type="file" name="main_image"   id="main_image"
-                                @if(!empty($productData['main_image']))
-                                value = "{{$productData['main_image']}}"
-                                  @else
-                                 value ="{{old('main_image')}}"
-                             @endif >
-                         <label class="custom-file-label" for="main_image">Choose file</label>
-                     </div>
-                 </div>
 
+                    <input  type="file" name="product_image" class="custom-file-input"   id="product_image"
+                            @if(!empty($productData['main_image']))
+                               value = "{{$productData['main_image']}}"
+                            @else
+                                value = "{{old('main_image')}}"
+
+                            @endif
+                           >
+                          <label class="custom-file-label" for="product_image">Choose file</label>
+                 </div>
                  <div class="image_preview " id="image_preview" style="width: 300px; height: 400px; border: 2px; ">
                      <span class="image_preview_default_text">Image Preview</span>
-
                          <div style="height:80px;" >
                              <img style="width: 150px"  class="image_preview_image"
+
                              @if(!empty($productData['main_image']))
-                                  src="{{asset("images/product_image/".$productData['main_image'])}}"
+                                  src="{{asset("images/product_image/small/".$productData['main_image']) }}"
                              @else
                                  src="{{asset("images/no-image.png")}}"
                              @endif >
+
                              @if(!empty($productData['main_image']))
                                  <a href="javascript:void(0)" class="confirmDeleteImage" record="image" recordName="product" recordid="{{$productData['id']}}" style="color: red">Delete image</a>
                              @endif
