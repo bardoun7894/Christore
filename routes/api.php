@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Banner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::get('/banners',function (){
+  return \App\Models\Banner::orderBy('created_at','desc')->get();
+});
+
+Route::prefix('banner')->group(function (){
+ Route::put('/{id}',[\App\Http\Controllers\BannerController::class,'updateStatus']);
+   Route::delete('/{id}',[\App\Http\Controllers\BannerController::class,'deleteBanner']);
+
 });

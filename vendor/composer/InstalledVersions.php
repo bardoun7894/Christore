@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'cd7ac7f4cfddd631908661614541bda08e7e0dcd',
+    'reference' => '0f3bd47740a404605d34ca61a53675d4652d9d04',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -477,16 +477,16 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'cd7ac7f4cfddd631908661614541bda08e7e0dcd',
+      'reference' => '0f3bd47740a404605d34ca61a53675d4652d9d04',
     ),
     'laravel/sail' => 
     array (
-      'pretty_version' => 'v1.4.8',
-      'version' => '1.4.8.0',
+      'pretty_version' => 'v1.4.11',
+      'version' => '1.4.11.0',
       'aliases' => 
       array (
       ),
-      'reference' => '66b26181c3e86266b0b98f45a3398b090f37dee9',
+      'reference' => 'e46a3228da4e95a411a981ac807bd119ab2485fa',
     ),
     'laravel/tinker' => 
     array (
@@ -499,12 +499,12 @@ private static $installed = array (
     ),
     'laravel/ui' => 
     array (
-      'pretty_version' => 'v3.1.0',
-      'version' => '3.1.0.0',
+      'pretty_version' => 'v3.2.0',
+      'version' => '3.2.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '444072cb2f8baaa15172c5cde2bd30d188c3b7e7',
+      'reference' => 'a1f82c6283c8373ea1958b8a27c3d5c98cade351',
     ),
     'league/commonmark' => 
     array (
@@ -532,6 +532,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '353f66d7555d8a90781f6f5e7091932f9a4250aa',
+    ),
+    'mariuzzo/laravel-js-localization' => 
+    array (
+      'pretty_version' => 'v1.8.0',
+      'version' => '1.8.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c3904018c656a11150949aa2ed00dcfcb1dfa3fc',
     ),
     'mcamara/laravel-localization' => 
     array (
@@ -1275,6 +1284,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '13e7e882eaa55863faa7c4ad7c60f12f1a8b5089',
+    ),
+    'tedivm/jshrink' => 
+    array (
+      'pretty_version' => 'v1.4.0',
+      'version' => '1.4.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0513ba1407b1f235518a939455855e6952a48bbc',
     ),
     'theseer/tokenizer' => 
     array (

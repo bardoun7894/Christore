@@ -37,11 +37,12 @@
                                 </div>
                             @endif
                             <div class="card-header " >
-                                <div>
+                                <div class="inline">
                                     <h3 class="card-title flex">{{__('messages.products')}}</h3>
-                                    <a href="{{url('admin/add-edit-product')}}" class="bg-blue-500 rounded-lg font-bold text-white text-center px-2 py-1 transition duration-300 ease-in-out hover:bg-blue-600 mr-6 float-right">
-                                       {{__('messages.add_product')}}
-                                    </a>
+                                    <a href="{{url('admin/add-edit-product')}}"  type="button" class="btn btn-block btn-primary text-white px-2 py-1 float-right  hover:bg-blue-600 mr-6" style="width: auto">
+                                        {{__('messages.add_product')}}</a>
+
+
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -89,9 +90,9 @@
                                                 </td>
                                                 <td style="color: grey">
                                                     @if(!empty($product->main_image))
-                                                        <img width="150" height="400" src=" {{asset('images/product_image/small/'.$product->main_image)}}">
+                                                        <img width="100" height="150" src=" {{asset('images/product_image/small/'.$product->main_image)}}">
                                                     @else
-                                                        <img width="150" height="400" src=" {{asset('images/no-image.png')}}">
+                                                        <img width="100" height="150" src=" {{asset('images/no-image.png')}}">
                                                     @endif
                                                 </td>
                                                 <td style="color: grey">

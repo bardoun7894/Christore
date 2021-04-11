@@ -2,7 +2,18 @@
 
 return [
     'email.required'=> 'البريد الالكتروني مطلوب',
+    'email'=> 'الايميل',
+    'password'=>"كلمة المرور",
+    'sign_up'=>'التسجيل',
+    'sign_in'=>'تسجيل الدخول',
+    'full_name'=>'الاسم الكامل',
+    'number_phone'=>'رقم الهاتف',
+    'confirm_password'=>'تاكيد كلمة المرور',
+    'you_have_account'=>'هل لديك حساب ؟',
+    'forgetـpassword'=>'هل نسيت كلمة السر',
+    'create_account'=>'أنشئ حساب',
     'id'=>"الرقم",
+    'login'=>'تسجيل الدخول',
     'logout'=>"خروج",
     'home'=>"الرئيسية",
     'language'=>"اللغة",
@@ -12,6 +23,9 @@ return [
     'admin_details'=>"الصلاحيات",
     'catalogues'=>"الفهرس",
     'sections'=>"الفروع",
+    'brands'=>"الشعارات",
+    'banners'=>"بانرات",
+    'brand'=>"الشعار",
     'section'=>"الفرع",
     'categories'=>"التصنيفات",
     'category'=>"التصنيف",
@@ -27,6 +41,8 @@ return [
     'delete_image_product'=>'تم حذف صورة المنتج بنجاح',
     'delete_category'=>'تم حذف الفئة بنجاح',
     'delete_product'=>'تم حذف المنتج بنجاح',
+    'delete_brand'=>'تم حذف الشعار بنجاح',
+    'delete_banner'=>'تم حذف البانر بنجاح',
     'delete'=>'حذف',
     'edit'=>'تعديل',
     'password.required'=> 'كلمة السر مطلوبة',
@@ -38,6 +54,9 @@ return [
     'size_message'=>'هذا المقاس موجود فعلا , المرجو اضافة مقاس اخر',
     'add_success'=>'تمت اضافة البيانات بنجاح',
     'update_success'=>'تمت تحديث البيانات بنجاح',
+    'men'=>'رجال',
+    'women'=>'ملابس النساء',
+    'kids'=>'أطفال'
 
 ];
 

@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <link href="{{ mix('js/app.js') }}" rel="stylesheet">
       <!-- DataTables -->
     <link rel="stylesheet" href="{{url('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{url('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -121,6 +122,7 @@
 <script>
   $(function(){
      $("#sections").DataTable();
+     $("#brands").DataTable();
      $("#product_attributes").DataTable();
      $("#products").DataTable();
      $("#categories").DataTable();

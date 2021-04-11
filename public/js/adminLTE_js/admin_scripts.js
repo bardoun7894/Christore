@@ -46,6 +46,28 @@ $(document).ready(function () {
            }
        )
    });
+   $(".updateBrandStatus").click(function(){
+       var status =$(this).children('i').attr('status');
+       // alert(status);return false;
+       var brand_id =$(this).attr("brand_id");
+       $.ajax(
+           {
+               type: 'post',
+               url: '/'+localization+'/admin/update-brand-status',
+               data: {brand_id:brand_id,status:status},
+               success:function (resp){
+                   if(resp['status'] === 1){
+                    $("#brand-"+brand_id).html("<i style='color: dodgerblue' class='fas fa-toggle-on'  status='active'></i>")
+                       }else{
+
+                       $("#brand-"+brand_id).html("<i  style='color: grey' class='fas fa-toggle-off' status='inactive'>")
+                   }
+                 },error:function (){
+                    alert("error");
+               }
+           }
+       )
+   });
    $(".updateCategoryStatus").click(function(){
        var status =$(this).text();
        var category_id =$(this).attr("category_id");
@@ -89,8 +111,7 @@ $(document).ready(function () {
                   console.log(one);
                   console.log(three);
               }
-          }
-            )
+          }  )
    });
 
    $('.updateAttributeStatus').click(function (){
@@ -172,7 +193,6 @@ $(document).ready(function () {
            }
        })
    });
-
    $(".confirmDeleteImage").click(function (){
       var record =$(this).attr("record");
       var recordid = $(this).attr("recordid");
@@ -196,7 +216,6 @@ $(document).ready(function () {
            }
        })
    });
-
     // (1) add remove fields automatically
     var maxField = 10; //Input fields increment limitation
     var addButton = $('.add_button'); //Add button selector

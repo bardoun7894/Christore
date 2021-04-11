@@ -135,7 +135,7 @@
                              </div>
                                 <label>Category Url</label>
                                     <div class="input-group mb-3">
-                                        <input id="url" name="url" type="url" class="form-control" placeholder="Category Url"
+                                        <input id="url" name="url" type="text" class="form-control" placeholder="Category Url"
                                            @if(!empty($categoryData['url']))
                                                value ="{{$categoryData['url']}}"
                                            @else

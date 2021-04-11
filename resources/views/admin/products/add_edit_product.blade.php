@@ -15,7 +15,6 @@
                 </div>
             </div>
         </section>
-
         @if(Session::has('flash_message_success'))
             <div class="alert alert-success" role="alert">
               {{Session::get('flash_message_success')}}
@@ -45,7 +44,7 @@
                   <form name="ProductForm" method="post"  enctype="multipart/form-data" id="ProductForm" > @csrf
         <div class="row" >
          <div class="col-md-6" >
-             <label>{{__("messages.section")}}</label>
+                     <label>{{__("messages.section")}}</label>
                             <select id="section_id" name="section_id" class="form-control select2" style="width: 100%;">
                                      <option selected="selected" value="">Select</option>
                                      @foreach($getSections as $getSection)
@@ -53,18 +52,38 @@
                                               @if(!empty($productData['section_id']) && $productData['section_id'] == $getSection->id))  selected @endif
                                             >{{$getSection->name}}</option>
                                        @endforeach
-                                    </select>
+                        </select>
+               <label>{{__("messages.brand")}}</label>
+                            <select id="brand_id" name="brand_id" class="form-control select2" style="width: 100%;">
+                                     <option selected="selected" value="">Select</option>
+                                     @foreach($getBrands as $getBrand)
+                                          <option value="{{$getBrand->id}}"
+                                              @if(!empty($productData['brand_id']) && $productData['brand_id'] == $getBrand->id))  selected @endif
+                                          >{{$getBrand->name}}</option>
+                                       @endforeach
+                        </select>
 
-                                    <label>{{__("messages.category")}}</label>
+                       <label>{{__("messages.category")}}</label>
                                     <select id="category_id" name="category_id" class="form-control select2" style="width: 100%;">
                                         <option selected="selected" value="">Select</option>
-                                        @foreach($getCategories as $getCategory)
-                                            {{ $getCategory->category_name }}
-                                            <option value= "{{$getCategory->id}}"
-                               @if(!empty($productData['category_id']) && $productData['category_id'] == $getCategory->id))  selected @endif
-                                              >   {{$getCategory->category_name}}</option>
-                                        @endforeach
-                            </select>
+
+                                         @foreach($getCategories as $section)
+                                         <optgroup label="{{$section['name']}}"> </optgroup>
+                                            @foreach($section['categories'] as $category)
+                                                <option selected="selected" value="{{$category['id']}}"> &nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp; {{$category['category_name']}} </option>
+                                                @foreach($category['subcategories'] as $subcategories)
+                                                    <option selected="selected"  value="{{$subcategories['id']}}"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;&nbsp; {{$subcategories['category_name']}} </option>
+                                                @endforeach
+                                            @endforeach
+                                          @endforeach
+{{--                                        @foreach($getCategories as $getCategory)--}}
+{{--                                            {{ $getCategory->category_name }}--}}
+{{--                                            <option value= "{{$getCategory->id}}"--}}
+{{--                               @if(!empty($productData['category_id']) && $productData['category_id'] == $getCategory->id))  selected @endif--}}
+{{--                                          >   {{$getCategory->category_name}}</option>--}}
+{{--                                    @endforeach--}}
+                                     </select>
 {{-- Product name--}}
                             <label>Product name</label>
                                     <div class="input-group mb-3">

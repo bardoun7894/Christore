@@ -11,7 +11,7 @@ class SectionController extends Controller
 {
     public function sections(){
         Session::put('page','sections');
-         $sections =Section::get();
+         $sections =Section::all();
         return view('admin.sections.section')->with(compact('sections'));
           }
     public function updateSectionStatus(Request $request){

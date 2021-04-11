@@ -119,6 +119,7 @@ class ComposerStaticInit91086a60ec9c5c80941ac29d213e07ac
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Mariuzzo\\LaravelJsLocalization\\' => 31,
         ),
         'L' => 
         array (
@@ -377,6 +378,10 @@ class ComposerStaticInit91086a60ec9c5c80941ac29d213e07ac
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Mariuzzo\\LaravelJsLocalization\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mariuzzo/laravel-js-localization/src/Mariuzzo/LaravelJsLocalization',
+        ),
         'League\\MimeTypeDetection\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/mime-type-detection/src',
@@ -524,12 +529,20 @@ class ComposerStaticInit91086a60ec9c5c80941ac29d213e07ac
                 0 => __DIR__ . '/..' . '/mcamara/laravel-localization/src',
             ),
         ),
+        'J' => 
+        array (
+            'JShrink' => 
+            array (
+                0 => __DIR__ . '/..' . '/tedivm/jshrink/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
+        'App\\Http\\Controllers\\Admin\\BrandController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/BrandController.php',
         'App\\Http\\Controllers\\Admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoryController.php',
         'App\\Http\\Controllers\\Admin\\ProductAttributeController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductAttributeController.php',
         'App\\Http\\Controllers\\Admin\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductController.php',
@@ -540,7 +553,10 @@ class ComposerStaticInit91086a60ec9c5c80941ac29d213e07ac
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\BannerController' => __DIR__ . '/../..' . '/app/Http/Controllers/BannerController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Front\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/Front/IndexController.php',
+        'App\\Http\\Controllers\\Front\\ProductsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Front/ProductsController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
@@ -554,6 +570,8 @@ class ComposerStaticInit91086a60ec9c5c80941ac29d213e07ac
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
+        'App\\Models\\Banner' => __DIR__ . '/../..' . '/app/Models/Banner.php',
+        'App\\Models\\Brand' => __DIR__ . '/../..' . '/app/Models/Brand.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\Models\\ProductAttribute' => __DIR__ . '/../..' . '/app/Models/ProductAttribute.php',
@@ -669,6 +687,8 @@ class ComposerStaticInit91086a60ec9c5c80941ac29d213e07ac
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\AdminTableSeeder' => __DIR__ . '/../..' . '/database/seeders/AdminTableSeeder.php',
+        'Database\\Seeders\\BannerSeeder' => __DIR__ . '/../..' . '/database/seeders/BannerSeeder.php',
+        'Database\\Seeders\\BrandSeeder' => __DIR__ . '/../..' . '/database/seeders/BrandSeeder.php',
         'Database\\Seeders\\CategoryTableSeeder' => __DIR__ . '/../..' . '/database/seeders/CategoryTableSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\ProductAttributesSeeder' => __DIR__ . '/../..' . '/database/seeders/ProductAttributesSeeder.php',
@@ -1131,7 +1151,6 @@ class ComposerStaticInit91086a60ec9c5c80941ac29d213e07ac
         'Faker\\Provider\\en_UG\\Person' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/en_UG/Person.php',
         'Faker\\Provider\\en_UG\\PhoneNumber' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/en_UG/PhoneNumber.php',
         'Faker\\Provider\\en_US\\Address' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/en_US/Address.php',
-        'Faker\\Provider\\en_US\\Company' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/en_US/Company.php',
         'Faker\\Provider\\en_US\\Payment' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/en_US/Payment.php',
         'Faker\\Provider\\en_US\\Person' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/en_US/Person.php',
         'Faker\\Provider\\en_US\\PhoneNumber' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/en_US/PhoneNumber.php',
@@ -1299,7 +1318,6 @@ class ComposerStaticInit91086a60ec9c5c80941ac29d213e07ac
         'Faker\\Provider\\ms_MY\\Person' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/ms_MY/Person.php',
         'Faker\\Provider\\ms_MY\\PhoneNumber' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/ms_MY/PhoneNumber.php',
         'Faker\\Provider\\nb_NO\\Address' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nb_NO/Address.php',
-        'Faker\\Provider\\nb_NO\\Company' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nb_NO/Company.php',
         'Faker\\Provider\\nb_NO\\Payment' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nb_NO/Payment.php',
         'Faker\\Provider\\nb_NO\\Person' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nb_NO/Person.php',
         'Faker\\Provider\\nb_NO\\PhoneNumber' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nb_NO/PhoneNumber.php',
@@ -1315,7 +1333,6 @@ class ComposerStaticInit91086a60ec9c5c80941ac29d213e07ac
         'Faker\\Provider\\nl_BE\\PhoneNumber' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/PhoneNumber.php',
         'Faker\\Provider\\nl_NL\\Address' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Address.php',
         'Faker\\Provider\\nl_NL\\Color' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Color.php',
-        'Faker\\Provider\\nl_NL\\Company' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Company.php',
         'Faker\\Provider\\nl_NL\\Internet' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Internet.php',
         'Faker\\Provider\\nl_NL\\Payment' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Payment.php',
         'Faker\\Provider\\nl_NL\\Person' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Person.php',
@@ -2672,6 +2689,7 @@ class ComposerStaticInit91086a60ec9c5c80941ac29d213e07ac
         'Intervention\\Image\\Point' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Point.php',
         'Intervention\\Image\\Response' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Response.php',
         'Intervention\\Image\\Size' => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image/Size.php',
+        'JShrink\\Minifier' => __DIR__ . '/..' . '/tedivm/jshrink/src/JShrink/Minifier.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'Laravel\\Sail\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/InstallCommand.php',
         'Laravel\\Sail\\Console\\PublishCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/PublishCommand.php',
@@ -2954,6 +2972,9 @@ class ComposerStaticInit91086a60ec9c5c80941ac29d213e07ac
         'League\\MimeTypeDetection\\FinfoMimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/FinfoMimeTypeDetector.php',
         'League\\MimeTypeDetection\\GeneratedExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php',
         'League\\MimeTypeDetection\\MimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/MimeTypeDetector.php',
+        'Mariuzzo\\LaravelJsLocalization\\Commands\\LangJsCommand' => __DIR__ . '/..' . '/mariuzzo/laravel-js-localization/src/Mariuzzo/LaravelJsLocalization/Commands/LangJsCommand.php',
+        'Mariuzzo\\LaravelJsLocalization\\Generators\\LangJsGenerator' => __DIR__ . '/..' . '/mariuzzo/laravel-js-localization/src/Mariuzzo/LaravelJsLocalization/Generators/LangJsGenerator.php',
+        'Mariuzzo\\LaravelJsLocalization\\LaravelJsLocalizationServiceProvider' => __DIR__ . '/..' . '/mariuzzo/laravel-js-localization/src/Mariuzzo/LaravelJsLocalization/LaravelJsLocalizationServiceProvider.php',
         'Mcamara\\LaravelLocalization\\Commands\\RouteTranslationsCacheCommand' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Commands/RouteTranslationsCacheCommand.php',
         'Mcamara\\LaravelLocalization\\Commands\\RouteTranslationsClearCommand' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Commands/RouteTranslationsClearCommand.php',
         'Mcamara\\LaravelLocalization\\Commands\\RouteTranslationsListCommand' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Commands/RouteTranslationsListCommand.php',
@@ -4927,7 +4948,6 @@ class ComposerStaticInit91086a60ec9c5c80941ac29d213e07ac
         'Symfony\\Component\\Mime\\Message' => __DIR__ . '/..' . '/symfony/mime/Message.php',
         'Symfony\\Component\\Mime\\MessageConverter' => __DIR__ . '/..' . '/symfony/mime/MessageConverter.php',
         'Symfony\\Component\\Mime\\MimeTypeGuesserInterface' => __DIR__ . '/..' . '/symfony/mime/MimeTypeGuesserInterface.php',
-        'Symfony\\Component\\Mime\\MimeTypes' => __DIR__ . '/..' . '/symfony/mime/MimeTypes.php',
         'Symfony\\Component\\Mime\\MimeTypesInterface' => __DIR__ . '/..' . '/symfony/mime/MimeTypesInterface.php',
         'Symfony\\Component\\Mime\\Part\\AbstractMultipartPart' => __DIR__ . '/..' . '/symfony/mime/Part/AbstractMultipartPart.php',
         'Symfony\\Component\\Mime\\Part\\AbstractPart' => __DIR__ . '/..' . '/symfony/mime/Part/AbstractPart.php',

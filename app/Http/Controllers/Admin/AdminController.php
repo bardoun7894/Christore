@@ -38,7 +38,7 @@ class AdminController extends Controller
       }
     public  function update_current_password(Request $request){
          if($request->isMethod('post')){
-             $data =$request->all();
+         $data =$request->all();
          if(Hash::check($data['current_password'],Auth::guard('admin')->user()->getAuthPassword())){
             //check if new password and confirm password is match
            if($data['new_password']===$data['confirm_password']){
@@ -95,11 +95,11 @@ class AdminController extends Controller
 
               }
     public  function login(Request $request){
-        if($request->isMethod('post')){
 
+        if($request->isMethod('post')){
             $messages=$this->getMessages();
             $rules =$this->getRules();
-          $this->validate($request,$rules,$messages);
+            $this->validate($request,$rules,$messages);
           $data =$request->all();
         if(Auth::guard('admin')->attempt(['email'=>$data['email'],'password'=>$data['password']])){
             return redirect('/admin/dashboard');

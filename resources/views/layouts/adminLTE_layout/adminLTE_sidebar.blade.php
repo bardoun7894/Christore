@@ -90,6 +90,29 @@
                         </a>
                     </li>
 
+            <li class="nav-item">
+                        @if(Session()->get('page')=="brands")
+                            <?php   $active = "active"  ?>
+                        @else
+                            <?php   $active = ""  ?>
+                        @endif
+                        <a href="{{url('/admin/brand')}}" class="nav-link {{$active}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>{{ __("messages.brands") }}</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        @if(Session()->get('page')=="banners")
+                            <?php   $active = "active"  ?>
+                        @else
+                            <?php   $active = ""  ?>
+                        @endif
+                        <a href="{{url('/admin/banner')}}" class="nav-link {{$active}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>{{ __("messages.banners") }}</p>
+                        </a>
+                    </li>
+
                      <li class="nav-item">
                             @if(Session()->get('page')=="categories")
                                 <?php  $active = "active" ?>

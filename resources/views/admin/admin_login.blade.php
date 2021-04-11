@@ -26,7 +26,10 @@
     <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
+
             <p class="login-box-msg">Sign in to start your session</p>
+
+
           @if(Session::has('error_message'))
                 <div class="alert alert-danger" role="alert">
                    {{Session::get('error_message')}}
@@ -40,6 +43,8 @@
                     @endforeach
                 </div>
             @endif
+
+
             <form action="{{url( LaravelLocalization::getLocalizedURL(LaravelLocalization::getCurrentLocale()))}}" method="post">@csrf
                 <div class="input-group mb-3">
                     <input id="email" name="email" type="email" class="form-control" placeholder="Email">
@@ -49,6 +54,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="input-group mb-3">
                     <input id="password" name="password" type="password" class="form-control" placeholder="Password">
                     <div class="input-group-append">
@@ -57,6 +63,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-8">
                         <div class="icheck-primary">
@@ -66,11 +73,14 @@
                             </label>
                         </div>
                     </div>
+
                     <!-- /.col -->
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                     </div>
+
                     <!-- /.col -->
+
                 </div>
             </form>
 

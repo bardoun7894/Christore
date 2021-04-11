@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
@@ -16,6 +17,7 @@ use function PHPUnit\Framework\fileExists;
 class ProductController extends Controller
 {
    public function products(){
+       Session::put('page','products');
        $products = Product::with(['section','category'])->get();
      return view('admin.products.products')->with(compact('products'));
 
@@ -74,7 +76,7 @@ class ProductController extends Controller
             $product = Product::find($id);
             $message = "product updated successfully";
              }
-        $getCategories = Category::all();
+
         if($request->isMethod('post')){
 
             $data= $request->all();
@@ -116,8 +118,8 @@ class ProductController extends Controller
 
 //            echo "<pre>";print_r(json_decode(json_encode($data)));die();
 
-            $product->category_id=$data['category_id'];
-            $product->section_id=$data['section_id'];
+            $product->category_id=   $data['category_id'];
+            $product->section_id=  $data['section_id'];
             $product->product_name = $data['product_name'];
             $product->description = $data['description'];
             $product->product_code = $data['product_code'];
@@ -138,6 +140,10 @@ class ProductController extends Controller
                 $product->is_featured= 'No';
             }
 
+            if($product->brand_id){
+                $product->brand_id= $data['brand_id'];
+            }
+            // $product->brand_id= $data['brand_id'];
             $product->fabric= $data['fabric'];
             $product->product_video = "";
             $product->meta_title =  $data['meta_title'];
@@ -148,9 +154,13 @@ class ProductController extends Controller
             Session()->flash("success_message",$message);
             return  redirect('/admin/products');
         }
+        $getCategories = Section::with('categories')->get();
+//        echo "<pre>";print_r(json_encode($getCategories));die;
+
         $fabricArray =array('cotton','polister','threed');
         $getSections =Section::get()->where('status',1);
-        return view('admin.products.add_edit_product')->with( compact('title','fabricArray','getSections','getCategories','productData','getProducts') );
+        $getBrands = Brand::all();
+        return view('admin.products.add_edit_product')->with( compact('title','fabricArray','getSections','getCategories','productData','getProducts','getBrands') );
     }
    public function updateProductStatus(Request $request){
        if ($request->ajax())

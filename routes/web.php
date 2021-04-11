@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductAttributeController;
 use App\Http\Controllers\Admin\ProductController;
 use \App\Http\Controllers\Admin\SectionController ;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -21,20 +23,25 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+
 
 Auth::routes();
 
 Route::group(['prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
 ],function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+
+    Route::prefix('/front')->namespace('Front')->group(function (){
+        Route::get('/redstore', [App\Http\Controllers\Front\IndexController::class, 'redstore']);
+
+        Route::get('/',[\App\Http\Controllers\Front\IndexController::class,'index']);
+        Route::get('/{url?}',[\App\Http\Controllers\Front\ProductsController::class,'listing']);
+      });
     Route::prefix('/admin')->namespace('Admin')->group(function(){
         // all the admin routes will be defined here
-        Route::match(['post','get'],'/', [App\Http\Controllers\Admin\AdminController::class, 'login']);
-        Route::group(['middleware' => ['admin']], function () {
+                Route::match(['post','get'],'/', [App\Http\Controllers\Admin\AdminController::class, 'login']);
+                Route::group(['middleware' => ['admin']], function () {
                 Route::get('dashboard', [AdminController::class, 'dashboard']);
                 Route::get('settings', [AdminController::class, 'settings']);
                 Route::get('logout', [AdminController::class, 'logout']);
@@ -42,6 +49,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
                 Route::post('update_current_password', [AdminController::class, 'update_current_password']);
                 Route::match(['get', 'post'], 'update_admin_details', [AdminController::class, 'update_admin_details']);
                 Route::get('section', [SectionController::class, 'sections']);
+                //brands
+                Route::get('brand', [BrandController::class, 'brands']);
+                Route::post('update-brand-status', [BrandController::class, 'updateBrandStatus']);
+                Route::match(['get','post'], 'add-brand/{id?}',[BrandController::class, 'addEditBrand']);
+                Route::get('delete-brand/{id?}', [BrandController::class, 'deleteBrand']);
+
                 Route::post('update-section-status', [SectionController::class, 'updateSectionStatus']);
                 Route::get('categories', [CategoryController::class, 'categories']);
                 Route::get('products', [ProductController::class, 'products']);
@@ -70,7 +83,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
             Route::post('update-product-image-status', [ProductController::class, 'updateProductImageStatus']);
 
 
+            Route::match(['get','post','put'],'banner',[\App\Http\Controllers\BannerController::class,'banners']);
+            Route::match(['get', 'post'], 'postData/{id}',function ($id){
+                $request = new Request();
+                if($request->isMethod('post')){
+                    return response()->json($id);
+                }
+                return response()->json($id);
 
+//                return response()->json($id);
+            });
 
         });
 
@@ -78,3 +100,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
 
 });
 
+Auth::routes();
+
+
+ Route::get('/getbannersData',function (){
+    $banners = \App\Models\banner::get();
+    return response()->json($banners);
+});
