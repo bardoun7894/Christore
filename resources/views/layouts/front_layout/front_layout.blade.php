@@ -10,7 +10,8 @@
     <!-- Front style -->
 {{--    <link id="callCss" rel="stylesheet" href="{{url('css/front_css/front.min.css')}}" media="screen"/>--}}
     <link href="{{url('css/front_css/base.css')}}" rel="stylesheet" media="screen"/>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
+{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
 
     <!-- Front style responsive -->
 {{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
@@ -22,8 +23,6 @@
     <link rel="shortcut icon" href="{{url('images/front_images/ico/favicon.ico')}}">
     <!-- box  icons -->
     <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-{{--    <link rel="preconnect" href="https://fonts.gstatic.com">--}}
-{{--    <link rel="preconnect" href="https://fonts.gstatic.com">--}}
    @if($language=="ar")
         <link href="{{url('css/front_css/bardouni_ar_style.css')}}" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -32,13 +31,16 @@
         <link href="{{url('css/front_css/bardouni_style.css')}}" rel="stylesheet"/>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300&display=swap" rel="stylesheet">
     @endif
+    <link href="{{url('css/lightslider.css')}}" rel="stylesheet" type="text/css" />
+
 
     {{--    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{url('images/front_images/ico/apple-touch-icon-144-precomposed.png')}}'">--}}
 {{--    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{url('images/front_images/ico/apple-touch-icon-114-precomposed.png')}}'">--}}
 {{--    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{url('images/front_images/ico/apple-touch-icon-72-precomposed.png')}}'">--}}
 {{--    <link rel="apple-touch-icon-precomposed" href="{{url('images/front_images/ico/apple-touch-icon-57-precomposed.png')}}'">--}}
 {{--    <style type="text/css" id="enject"></style>--}}
-
+    <script src="{{url('js/jQuery.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/front_js/lightslider.js') }}" type="text/javascript" ></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
@@ -46,15 +48,12 @@
 
 @if($language=="ar")
     @include('layouts.front_layout.ar.front_header_ar')
+    @include('layouts.front_layout.ar.carousel_ar')
 
  @else
     @include('layouts.front_layout.en.front_header')
+    @include('layouts.front_layout.en.carousel')
 @endif
-
-
-
-
-
 
 
 
@@ -85,8 +84,6 @@
 
 {{--            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>--}}
 {{--            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>--}}
-
-
 {{--        </div>--}}
 
 {{--    </div>--}}
@@ -123,14 +120,15 @@
 
 
 {{--<!-- Placed at the end of the document so the pages load faster ============================================= -->--}}
-<script src="{{url('js/front_js/jquery.js')}}" type="text/javascript"></script>
+{{--<script src="{{url('js/front_js/jquery.js')}}" type="text/javascript"></script>--}}
+{{--<script src="{{url('js/front_js/jquery.lightbox-0.5.js')}}"></script>--}}
 <script src="{{url('js/front_js/front_scripts.js')}}" type="text/javascript"></script>
+<script src="{{ asset('js/front_js/lightslider.js') }}" type="text/javascript" ></script>
 {{--<script src="{{url('js/front_js/front.min.js')}}" type="text/javascript"></script>--}}
 <script src="{{url('js/front_js/google-code-prettify/prettify.js')}}"></script>
 
 {{--<script src="{{url('js/front_js/front.js')}}"></script>--}}
-<script src="{{ mix('/js/app.js') }}" defer></script>
-<script src="{{url('js/front_js/jquery.lightbox-0.5.js')}}"></script>
+{{--<script src="{{ mix('/js/app.js') }}" defer></script>--}}
 
 
 </body>

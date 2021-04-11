@@ -17,3 +17,16 @@ $(document).on('click','.sign-up-btn',function () {
 $(document).on('click','.user,.already-have-account',function () {
     $('.form').removeClass('sign-up-active').addClass('login-active');
 });
+
+// slider adapter
+$(document).ready(function() {
+    $('#adaptive').lightSlider({
+        adaptiveHeight:true,
+        item:1,
+        slideMargin:0,
+        auto:true,
+        loop:true,
+        enableDrag:true
+
+    });
+});
