@@ -27,6 +27,7 @@ class Text extends \Faker\Provider\Text
      * (1857)
      *
      * @see http://www.gutenberg.org/cache/epub/14155/pg14155.txt
+     *
      * @var string
      */
     protected static $baseText = <<<'EOT'
@@ -1915,7 +1916,7 @@ des ongles et serraient la chair au poignet. Les garnitures de
 dentelles, les broches de diamants, les bracelets à médaillon
 frissonnaient aux corsages, scintillaient aux poitrines,
 bruissaient sur les bras nus. Les chevelures, bien collées sur les
-front et tordues à la nuque, avaient, en couronnes, en grappes ou
+fronts et tordues à la nuque, avaient, en couronnes, en grappes ou
 en rameaux, des myosotis, du jasmin, des fleurs de grenadier, des
 épis ou des bleuets. Pacifiques à leurs places, des mères à figure
 renfrognée portaient des turbans rouges.
@@ -5720,7 +5721,7 @@ bouche rentrée. Il reconnut le maire à son écharpe, et lui exposa
 que M. le préfet n'avait pu venir. Il était, lui, un conseiller de
 préfecture; puis il ajouta quelques excuses. Tuvache y répondit
 par des civilités, l'autre s'avoua confus; et ils restaient ainsi,
-face à face, et leurs front se touchant presque, avec les membres
+face à face, et leurs fronts se touchant presque, avec les membres
 du jury tout alentour, le conseil municipal, les notables, la
 garde nationale et la foule. M. le conseiller, appuyant contre sa
 poitrine son petit tricorne noir, réitérait ses salutations,
@@ -6221,7 +6222,7 @@ Le festin fut long, bruyant, mal servi; l'on était si tassé, que
 l'on avait peine à remuer les coudes, et les planches étroites qui
 servaient de bancs faillirent se rompre sous le poids des
 convives. Ils mangeaient abondamment. Chacun s'en donnait pour sa
-quote-part. La sueur coulait sur tous les front; et une vapeur
+quote-part. La sueur coulait sur tous les fronts; et une vapeur
 blanchâtre, comme la buée d'un fleuve par un matin d'automne,
 flottait au-dessus de la table, entre les quinquets suspendus.
 Rodolphe, le dos appuyé contre le calicot de la tente, pensait si
@@ -9294,7 +9295,7 @@ des balustrades. À l'angle des rues voisines, de gigantesques
 affiches répétaient en caractères baroques: «_Lucie de
 Lamermoor_... Lagardy... Opéra..., etc.» Il faisait beau; on avait
 chaud; la sueur coulait dans les frisures, tous les mouchoirs
-tirés épongeaient les front rouges; et parfois un vent tiède, qui
+tirés épongeaient les fronts rouges; et parfois un vent tiède, qui
 soufflait de la rivière, agitait mollement la bordure des tentes
 en coutil suspendues à la porte des estaminets. Un peu plus bas,
 cependant, on était rafraîchi par un courant d'air glacial qui

@@ -12,10 +12,8 @@ class Section extends Model
     public static function sections(){
 
        $getSection=Section::with('categories')->where('status',1)->get();
-
-
-//    $getSection=json_decode(json_encode($getSection),true);
-    return $getSection;
+       $getSection=json_decode(json_encode($getSection),true);
+     return $getSection;
 
     }
     public function categories(){

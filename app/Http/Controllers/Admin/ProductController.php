@@ -192,9 +192,7 @@ class ProductController extends Controller
              {
              $status =1 ;
              }
-
        }
-
        ProductImage::where('id',$data['product_image_id'])->update(['status'=> $status]);
        return response()->json([ 'status'=>$status,'product_image_id' => $data['product_image_id']]);
    }
@@ -247,6 +245,4 @@ class ProductController extends Controller
         $message =   __('messages.delete_product');
         return redirect()->back()->with("success_message",$message);
     }
-
-
 }

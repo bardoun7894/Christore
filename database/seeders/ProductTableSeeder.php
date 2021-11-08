@@ -14,11 +14,11 @@ class ProductTableSeeder extends Seeder
     public function run()
     {
       $products =[
-        [
+          [
         "id"=>1,
         "category_id"=>2,
         "section_id"=>2,
-        "product_name"=>"blue T-shirt",
+        "product_name"=>"كميسون",
         "product_code"=>"B023",
         "product_color"=>"",
         "product_price"=>100,
@@ -37,9 +37,31 @@ class ProductTableSeeder extends Seeder
         "meta_description"=>"",
         "meta_keywords"=>"",
         "is_featured"=>'No',
-        "status"=>1 ]
-
-      ];
+        "status"=>1 ],    [
+        "id"=>2,
+        "category_id"=>2,
+        "section_id"=>2,
+        "product_name"=>"بجامة",
+        "product_code"=>"pg023",
+        "product_color"=>"",
+        "product_price"=>100,
+        "product_discount"=>10,
+        "product_weight"=>10,
+        "product_video"=>"",
+        "main_image"=>"",
+        "description"=>"",
+        "wash_care"=>"",
+        "fabric"=>"",
+        "pattern"=>"",
+        "sleeve"=>"",
+        "fit"=>"",
+        "occasion"=>"",
+        "meta_title"=>"",
+        "meta_description"=>"",
+        "meta_keywords"=>"",
+        "is_featured"=>'yes',
+        "status"=>1 ],
+                 ];
       Product::insert($products);
     }
 }

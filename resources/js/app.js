@@ -6,15 +6,11 @@
 
 
 import Vue from "vue";
-require('lang.js');
 
 require('./bootstrap');
 
 window.Vue = require('vue').default;
-import VueLang from '@eli5/vue-lang-js'
 
-// get the data source
-import translations from './vue-translations.js';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -41,9 +37,4 @@ Vue.component('register-form' , require('./components/RegisterForm.vue').default
 
 const app = new Vue({
     el: '#app',
-});
-Vue.use(VueLang, {
-    messages: translations, // Provide locale file
-    // locale: 'en', // Set locale
-    fallback: 'en' // Set fallback lacale
 });

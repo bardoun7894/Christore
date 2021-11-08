@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "mariuzzo/laravel-js-localization": "^1.8",
-        "mcamara/laravel-localization": "^1.6"
+        "mcamara/laravel-localization": "^1.6",
+        "symfony/mime": "^5.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

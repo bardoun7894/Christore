@@ -10,9 +10,12 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/mcamara/laravel-localization" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/tedivm/jshrink" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mariuzzo/laravel-js-localization" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-php81" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="boxicons" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>

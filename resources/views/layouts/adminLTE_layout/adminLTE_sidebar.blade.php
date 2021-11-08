@@ -26,7 +26,7 @@
                     <p>{{__("messages.Dashboard")}}</p>
                </a>
             </li>
-
+{{--settings    --}}
              @if(Session()->get('page')=="settings"|| Session()->get('page')=="update_admin_details")
                         <?php   $active = "active"  ?>
                    @else
@@ -60,6 +60,8 @@
                             <p>{{__("messages.admin_details")}}</p>
                         </a>
                     </li>
+
+
                 </ul>
             </li>
 
@@ -68,6 +70,8 @@
             @else
                   <?php   $active = ""  ?>
            @endif
+
+{{-- catalogues--}}
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link  {{$active}}">
                     <i class="nav-icon fas fa-th"></i>
@@ -76,7 +80,7 @@
 
                 <ul class="nav nav-treeview ">
 
-
+ {{--sections--}}
                     <li class="nav-item">
 
                         @if(Session()->get('page')=="sections")
@@ -89,7 +93,7 @@
                             <p>{{ __("messages.sections") }}</p>
                         </a>
                     </li>
-
+{{--brands--}}
             <li class="nav-item">
                         @if(Session()->get('page')=="brands")
                             <?php   $active = "active"  ?>
@@ -101,6 +105,7 @@
                             <p>{{ __("messages.brands") }}</p>
                         </a>
                     </li>
+{{--banners--}}
                     <li class="nav-item">
                         @if(Session()->get('page')=="banners")
                             <?php   $active = "active"  ?>
@@ -112,7 +117,7 @@
                             <p>{{ __("messages.banners") }}</p>
                         </a>
                     </li>
-
+{{--categories--}}
                      <li class="nav-item">
                             @if(Session()->get('page')=="categories")
                                 <?php  $active = "active" ?>
@@ -124,7 +129,7 @@
                                 <p>{{ __("messages.categories") }}</p>
                             </a>
                      </li>
-
+{{--products--}}
                     <li class="nav-item">
                             @if(Session()->get('page')=="products")
                                 <?php  $active = "active" ?>
@@ -136,6 +141,20 @@
                                 &nbsp;&nbsp;&nbsp;   <p>{{ __("messages.products") }}</p>
                             </a>
                      </li>
+  {{--nav_links--}}
+            <li class="nav-item">
+                            @if(Session()->get('page')=="nav_links")
+                                <?php  $active = "active" ?>
+                            @else
+                                <?php  $active = ""  ?>
+                            @endif
+                            <a href="{{url('/admin/navlinks')}}" class="nav-link {{$active}}">
+                                <i class="fas fa-tshirt"></i>
+                                &nbsp;&nbsp;&nbsp;   <p> nav_links </p>
+                            </a>
+                     </li>
+
+
                 </ul>
             </li>
 

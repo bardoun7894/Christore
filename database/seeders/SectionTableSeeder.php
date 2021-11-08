@@ -15,7 +15,7 @@ class SectionTableSeeder extends Seeder
     public function run()
     {
       $sectionsRecord=[
-          ['id'=>1,'name'=>'Men','status'=>1],
+          ['id'=>1,'name'=>'Men','status'=>0],
           ['id'=>2,'name'=>'Women','status'=>1],
           ['id'=>3,'name'=>'Kids','status'=>1]
       ];

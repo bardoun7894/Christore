@@ -156,7 +156,7 @@ class Batch implements Arrayable, JsonSerializable
     /**
      * Add additional jobs to the batch.
      *
-     * @param  \Illuminate\Support\Collection|array  $jobs
+     * @param  \Illuminate\Support\Enumerable|array  $jobs
      * @return self
      */
     public function add($jobs)
@@ -170,7 +170,10 @@ class Batch implements Arrayable, JsonSerializable
                 $count += count($job);
 
                 return with($this->prepareBatchedChain($job), function ($chain) {
-                    return $chain->first()->chain($chain->slice(1)->values()->all());
+                    return $chain->first()
+                            ->allOnQueue($this->options['queue'] ?? null)
+                            ->allOnConnection($this->options['connection'] ?? null)
+                            ->chain($chain->slice(1)->values()->all());
                 });
             } else {
                 $job->withBatchId($this->id);
@@ -365,7 +368,7 @@ class Batch implements Arrayable, JsonSerializable
     }
 
     /**
-     * Determine if the batch has "then" callbacks.
+     * Determine if the batch has "finally" callbacks.
      *
      * @return bool
      */
@@ -456,6 +459,7 @@ class Batch implements Arrayable, JsonSerializable
      *
      * @return array
      */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
         return $this->toArray();

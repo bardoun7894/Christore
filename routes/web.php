@@ -30,15 +30,8 @@ Auth::routes();
 Route::group(['prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
 ],function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-
-    Route::prefix('/front')->namespace('Front')->group(function (){
-        Route::get('/redstore', [App\Http\Controllers\Front\IndexController::class, 'redstore']);
-
-        Route::get('/',[\App\Http\Controllers\Front\IndexController::class,'index']);
-        Route::get('/{url?}',[\App\Http\Controllers\Front\ProductsController::class,'listing']);
-      });
-    Route::prefix('/admin')->namespace('Admin')->group(function(){
+//    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+   Route::prefix('/admin')->namespace('Admin')->group(function(){
         // all the admin routes will be defined here
                 Route::match(['post','get'],'/', [App\Http\Controllers\Admin\AdminController::class, 'login']);
                 Route::group(['middleware' => ['admin']], function () {
@@ -58,6 +51,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
                 Route::post('update-section-status', [SectionController::class, 'updateSectionStatus']);
                 Route::get('categories', [CategoryController::class, 'categories']);
                 Route::get('products', [ProductController::class, 'products']);
+                Route::get('navlinks', [\App\Http\Controllers\NavLinkController::class, 'navlinks']);
                 Route::post('update-category-status', [CategoryController::class, 'updateCategoryStatus']);
                 Route::post('update-product-status', [ProductController::class, 'updateProductStatus']);
                 Route::post('append-category-level', [CategoryController::class, 'appendCategoryLevel']);
@@ -97,7 +91,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         });
 
         });
-
+   Route::prefix('/front')->namespace('Front')->group(function (){
+       Route::get('/', [\App\Http\Controllers\Front\FrontController::class, 'front']);
+   });
 });
 
 Auth::routes();
