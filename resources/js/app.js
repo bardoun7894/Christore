@@ -21,13 +21,13 @@ window.Vue = require('vue').default;
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('banner-component' , require('./components/BannerComponent.vue').default);
-Vue.component('front-layout' , require('./components/FrontLayout.vue').default);
-Vue.component('arabic-header' , require('./components/ArabicHeader.vue').default);
-Vue.component('normal-header' , require('./components/NormalHeader.vue').default);
-Vue.component('login-form' , require( './components/LoginForm.vue').default);
-Vue.component('register-form' , require('./components/RegisterForm.vue').default);
+//
+// Vue.component('banner-component' , require('./components/BannerComponent.vue').default);
+// Vue.component('front-layout' , require('./components/FrontLayout.vue').default);
+// Vue.component('arabic-header' , require('./components/ArabicHeader.vue').default);
+// Vue.component('normal-header' , require('./components/NormalHeader.vue').default);
+// Vue.component('login-form' , require( './components/LoginForm.vue').default);
+// Vue.component('register-form' , require('./components/RegisterForm.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

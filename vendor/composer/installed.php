@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'eddb8cde74fadb3778a6b9a402380e71d010c019',
+    'reference' => 'f007b57bb410eea09d11d43e493c298428f452b5',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -19,6 +19,15 @@
       array (
       ),
       'reference' => '9cb795bf30988e8c96dd3c40623c48a877bc6714',
+    ),
+    'brianium/paratest' => 
+    array (
+      'pretty_version' => 'v6.3.1',
+      'version' => '6.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3d81e35876f6497467310b123583cca6bd4c38f2',
     ),
     'brick/math' => 
     array (
@@ -445,7 +454,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'eddb8cde74fadb3778a6b9a402380e71d010c019',
+      'reference' => 'f007b57bb410eea09d11d43e493c298428f452b5',
     ),
     'laravel/sail' => 
     array (

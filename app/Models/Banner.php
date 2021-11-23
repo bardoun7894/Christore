@@ -12,4 +12,5 @@ class Banner extends Model
     public static function getBanners(){
      return Banner::where('status',1)->orderBy('id','desc')->get();
     }
+ 
 }

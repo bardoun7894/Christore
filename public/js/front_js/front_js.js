@@ -15,9 +15,22 @@ $(document).on('click','.sign-up-form-cancel',function (){
 })
 $(document).on('click','.sign-up-btn',function (){
     $(".form").addClass('sign-up-form-active').removeClass('login-form-active')
-
-})
+});
 $(document).on('click','.login-btn',function (){
     $(".form").addClass('login-form-active').removeClass('sign-up-form-active')
+});
+$(document).ready( function(){
+    $("#adaptive").lightSlider({
+       item:1,
+       autoWidth: true, 
+    });
+  
+});
 
-})
+$(document).ready( function(){
+    $("#autoWidth").lightSlider({
+     item:5
+    
+    });
+  
+});

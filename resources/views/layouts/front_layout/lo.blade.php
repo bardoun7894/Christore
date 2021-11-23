@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Favicon -->
-{{--    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />--}}
-    <!-- Font Awesome -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <!-- Glidejs -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
     <!-- Custom StyleSheet -->
-    <link rel="stylesheet" href="{{url('css/font_css/front_en.css')}}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="{{url('css/font_css/front_en.css')}}"  />
+    <link rel="stylesheet" href="{{url('css/font_css/lightslider.css')}}"  />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url('js/lightslider.js')}}"></script>
+    <script rel="stylesheet" src="{{url('/js/front_js/front_js.js')}}"></script>
+
     <title>Bardouni Store - Ecommerce Website</title>
 </head>
 
@@ -47,7 +48,7 @@
           <li><a href="#">Kids</a></li>
       </ul>
 {{--          right menu--}}
-          <div class="right-menu">
+      <div class="right-menu">
               <a href="#" class="search">
                <i class="fas fa-search"></i>
               </a>
@@ -63,9 +64,7 @@
       </a>
   </div>
 
-
 </nav>
-
 
 {{--search bar --}}
 
@@ -77,63 +76,44 @@
     </div>
 </div>
 {{--login and signup--}}
-
-<div class="form">
-    <div class="login-form">
-         <a class="login-form-cancel"><i class="fas fa-times"></i></a>
-         <strong>Log In</strong>
-       <form>
-          <input type="email" placeholder="Example@email.com" name="email">
-          <input type="password" placeholder="*******" name="password">
-          <input type="submit" value="log in">
-       </form>
-{{--        forget and sign up btn--}}
-        <div class="form-btns">
-            <a href="#" class="forget">Forget Your Password ? </a>
-            <a href="#" class="sign-up-btn">Create Account </a>
-        </div>
-     </div>
-    <div class="sign-up-form">
-         <a class="sign-up-form-cancel"><i class="fas fa-times"></i></a>
-         <strong>Sign UP</strong>
-       <form>
-          <input type="text" placeholder="Name" name="email" required="">
-          <input type="tel" placeholder="phone number" name="phone" required="">
-          <input type="email" placeholder="Example@email.com" name="email" required="">
-          <input type="password" placeholder="*******" name="password" required="">
-          <input type="submit" value="Sign Up">
-       </form>
-{{--        forget and sign up btn--}}
-        <div class="form-btns">
-{{--            <a href="#" class="forget">Forget Your Password ? </a>--}}
-            <a href="#" class="login-btn">Log In </a>
-        </div>
-     </div>
-</div>
-
+@include('layouts.front_layout.login_signup')
+ 
 {{--full slider--}}
-<div class="full-slider-box">
-<!-- slider-text container-!?-->
-  <div class="slider-text-container">
-      <span>Limited Offer </span>
-      <strong>30% off with promo code</strong>
-      <a href="#" class="f-slider-btn"> Shop Now </a>
+@include('layouts.front_layout.banner')
+{{-- end full-slider-box --}}
+
+{{-- Featured Categories --}}
+<div class="feature-heading">
+    <h2>Featured Categories</h2>
+</div> 
+@include('layouts.front_layout.featured_categories')
+
+<!-- new arrival-->
+<section class="new-arrival"> 
+  <div class="arrival-heading">
+    <strong> New Arrival</strong>
+        <p>We provide you new design Fashion Clothes</p>
   </div>
+<div class="product-container">
+  {{-- product box --}}
+  @for ($i = 0; $i <= 6; $i++)
+      <div class="product-box">
+        {{-- image --}}
+        <div class="product-img">
+           <img src="{{url('/images/product_image/feature_1.jpg')}}" alt="">
+        </div>  
+        {{-- details --}}
+      <div class="product-details">
+          <a href="#" class="p-name">Drawstring T-shirt</a>
+          <span class="p-price">$100</span> 
+      </div>
+      </div>
+  @endfor
+
 </div>
+</section>
 
 
-
-
-
-<!-- Glidejs -->
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>--}}
-{{--<!-- Custom Scripts -->--}}
-{{--<script src="./js/products.js"></script>--}}
-{{--<script src="./js/slider.js"></script>--}}
-{{--<script src="./js/index.js"></script>--}}
-{{--<script type="javascript" href="{{url('js/JQuery')}}"></script>--}}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="{{url('/js/front_js/front_js.js')}}"></script>
 </body>
 
 </html>
