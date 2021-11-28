@@ -15,30 +15,9 @@ class CalcTest extends TestCase
   
 private $cart;
     public function  create(){    
-    $this->cart =new Cart();
-        $data =   [ 
-            [   'id'=>1,
-        'name'=>'admin',
-        'type'=>'admin',
-        'mobile'=>'0708150351',
-        'email'=>'mbardouni44@gmail.com',
-        'password'=> "moha7894",
-        'image'=>'',
-        'status'=> 1
-    ] ,[
-        'id'=>2,
-        'name'=>'moha',
-        'type'=>'subAdmin',
-        'mobile'=>'0000000',
-        'email'=>'subAdm@gmail.com',
-        'password'=> "sub7894",
-        'image'=>'',
-        'status'=> 0
-    ]]
-
-; 
-$this->cart->insert($data); 
-} 
+  
+  
+    } 
 
 public function test_admin_name_is_found(){
     $this->create();

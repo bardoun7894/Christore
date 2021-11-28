@@ -1,9 +1,4 @@
-$(document).on('click','.search',function (){
-    $(".search-bar").addClass('search-bar-active')
-})
-$(document).on('click','.search-cancel',function (){
-    $(".search-bar").removeClass('search-bar-active')
-})  ;
+
 $(document).on('click','.user',function (){
     $(".form").addClass('login-form-active');
 })
@@ -19,7 +14,7 @@ $(document).on('click','.sign-up-btn',function (){
 $(document).on('click','.login-btn',function (){
     $(".form").addClass('login-form-active').removeClass('sign-up-form-active')
 });
-$(document).ready( function(){
+$(document).on( 'ready',function(){
     $("#adaptive").lightSlider({
        item:1,
        autoWidth: true, 
@@ -27,10 +22,33 @@ $(document).ready( function(){
   
 });
 
-$(document).ready( function(){
+//for slider where screen is less than 768px
+var width =  window.innerWidth; 
+$(document).on('ready', function(){
     $("#autoWidth").lightSlider({
-     item:5
-    
-    });
-  
+       item:width<900?3:5, 
+    }); 
 });
+// for fix menu when scroll down and top
+$(window).on('scroll', function(){
+  if($(document).scrollTop() > 50) {
+        $('.navigation').addClass('fix-nav');
+    }else{
+        $('.navigation').removeClass('fix-nav');
+    }
+}); 
+// for responsive   menu   
+jQuery(function() { 
+    $(".toggle").on('click',function(){
+        $(".toggle").toggleClass("active");
+        $(".navigation").toggleClass("active");
+    })
+ 
+})
+ 
+$(document).on('click','.search',function (){
+    $(".search-bar").addClass('search-bar-active')
+})
+$(document).on('click','.search-cancel',function (){
+    $(".search-bar").removeClass('search-bar-active')
+})  ;

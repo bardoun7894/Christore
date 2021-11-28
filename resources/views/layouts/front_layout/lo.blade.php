@@ -19,53 +19,8 @@
     <title>Bardouni Store - Ecommerce Website</title>
 </head>
 
-<body>
-<nav class="nav">
-    <div class="social-call">
-        <div class="social">
-          <a href=""><i class="fab fa-facebook-f"></i></a>
-          <a href=""><i class="fab fa-twitter"></i></a>
-          <a href=""><i class="fab fa-instagram"></i></a>
-          <a href=""><i class="fab fa-youtube"></i></a>
-        </div>
-        <div class="phone">
-           <a><i class="fas fa-phone-alt"></i> +212708150351 </a>
-        </div>
-    </div>
-{{--  menu bar--}}
-  <div class="navigation">
-{{--      logo--}}
-      <a href="#" class="logo">
-          <img src="{{url('/images/bardou.png')}}"  alt=""/>
-{{--  menu--}}
-      <ul class="menu">
-          <li><a href="#">Home</a> </li>
-          <li> <a href="#">Men</a>
-              {{--  sale lable--}}
-               <span class="sale-lable">Sale</span>
-          </li>
-          <li><a href="#">Women</a></li>
-          <li><a href="#">Kids</a></li>
-      </ul>
-{{--          right menu--}}
-      <div class="right-menu">
-              <a href="#" class="search">
-               <i class="fas fa-search"></i>
-              </a>
-              <a href="#" class="user">
-                <i class="fas fa-user"></i>
-              </a>
-              <a href="#">
-           <i class="fas fa-shopping-cart">
-               <span class="num-cart-product"> 0 </span>
-           </i>
-              </a>
-          </div>
-      </a>
-  </div>
-
-</nav>
-
+<body   @if($language == 'ar')style="direction:rtl"@endif>
+@include('layouts.front_layout.nav') 
 {{--search bar --}}
 
 <div class="search-bar">
@@ -89,30 +44,24 @@
 @include('layouts.front_layout.featured_categories')
 
 <!-- new arrival-->
-<section class="new-arrival"> 
-  <div class="arrival-heading">
-    <strong> New Arrival</strong>
-        <p>We provide you new design Fashion Clothes</p>
-  </div>
-<div class="product-container">
-  {{-- product box --}}
-  @for ($i = 0; $i <= 6; $i++)
-      <div class="product-box">
-        {{-- image --}}
-        <div class="product-img">
-           <img src="{{url('/images/product_image/feature_1.jpg')}}" alt="">
-        </div>  
-        {{-- details --}}
-      <div class="product-details">
-          <a href="#" class="p-name">Drawstring T-shirt</a>
-          <span class="p-price">$100</span> 
-      </div>
-      </div>
-  @endfor
+@include('layouts.front_layout.new_arrival')
+ 
+{{--  end new arrival --}}
 
-</div>
-</section>
+ {{-- offer --}}
+@include('layouts.front_layout.offer')
 
+<!-- featured propducts-->
+@include('layouts.front_layout.featured_products')
+ 
+{{-- services --}}
+ @include('layouts.front_layout.services')
+
+{{-- footer --}}
+
+<footer>
+ @include('layout.front_layout.footer')
+</footer>
 
 </body>
 
