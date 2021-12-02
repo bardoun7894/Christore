@@ -93,7 +93,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         });
    Route::prefix('/front')->namespace('Front')->group(function (){
        Route::get('/', [\App\Http\Controllers\Front\FrontController::class, 'front']);
-   });
+       Route::get('/products', [\App\Http\Controllers\Front\FrontController::class, 'get_all_products']); 
+    //    Route::post('/sort_products', [\App\Http\Controllers\Front\FrontController::class, 'get_sorting']);
+
+    });
 });
 
 Auth::routes();

@@ -68,6 +68,7 @@ $(document).ready(function () {
            }
        )
    });
+   
    $(".updateCategoryStatus").click(function(){
        var status =$(this).text();
        var category_id =$(this).attr("category_id");

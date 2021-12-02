@@ -18,12 +18,12 @@
       <a href="#" class="logo">
           <img src="{{url('/images/logo/Logo111.png')}}" style="width: 100px;height:70px" alt=""/>
       </a>
-      {{-- menu icon --}}
-      <div class="toggle"></div>
-       {{-- menu --}}
-
+        {{-- menu icon --}}
+        <div class="toggle"></div>
+        {{-- menu --}} 
       <ul class="menu"> 
-          <li><a href="#">Home</a></li>
+          <li><a href="{{url('/front')}}">Home</a></li>
+          <li><a href="{{url('/front/products')}}">Products</a></li>
           @foreach ($sections as $section)
           <li> <a href="#">{{$section->name}}</a>
               {{--  sale lable--}}
@@ -32,9 +32,8 @@
                @endif
           </li>
           @endforeach
-        
       </ul>
-{{--          right menu--}}
+{{--   right menu  --}}
       <div class="right-menu">
               <a href="#" class="search">
                <i class="fas fa-search"></i>

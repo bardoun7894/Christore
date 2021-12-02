@@ -7,8 +7,7 @@
     {{-- product box --}}
     @foreach ($products as $product) 
          
-        <div class="product-box">
-         
+        <div class="product-box"> 
           {{-- image --}}
           <div class="product-img">
             <a href="#" class="add-cart">

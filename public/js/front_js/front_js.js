@@ -1,4 +1,4 @@
-
+var localization;
 $(document).on('click','.user',function (){
     $(".form").addClass('login-form-active');
 })
@@ -17,17 +17,19 @@ $(document).on('click','.login-btn',function (){
 $(document).on( 'ready',function(){
     $("#adaptive").lightSlider({
        item:1,
-       autoWidth: true, 
+       autoWidth: true,
     });
-  
+
 });
 
 //for slider where screen is less than 768px
-var width =  window.innerWidth; 
+var width =  window.innerWidth;
 $(document).on('ready', function(){
+
+      localization= document.location.href.split("/")[3];
     $("#autoWidth").lightSlider({
-       item:width<900?3:5, 
-    }); 
+       item:width<900?3:5,
+    });
 });
 // for fix menu when scroll down and top
 $(window).on('scroll', function(){
@@ -36,19 +38,26 @@ $(window).on('scroll', function(){
     }else{
         $('.navigation').removeClass('fix-nav');
     }
-}); 
-// for responsive   menu   
-jQuery(function() { 
+});
+// for responsive   menu
+jQuery(function() {
     $(".toggle").on('click',function(){
         $(".toggle").toggleClass("active");
         $(".navigation").toggleClass("active");
     })
- 
+
 })
- 
+
 $(document).on('click','.search',function (){
     $(".search-bar").addClass('search-bar-active')
 })
 $(document).on('click','.search-cancel',function (){
     $(".search-bar").removeClass('search-bar-active')
 })  ;
+
+$(document).on('ready',function () {
+    $('#sort').on('change',function (){
+        this.form.submit();
+    })
+} );
+

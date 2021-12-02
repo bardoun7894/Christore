@@ -1,10 +1,15 @@
+ 
+ 
+<?php  
+$language =   app()->getLocale();
+ $sections =  App\Models\Section::where("status",1)->get(); 
+?> 
 
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
     <!-- Glidejs -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
@@ -20,7 +25,8 @@
 </head>
 
 <body   @if($language == 'ar')style="direction:rtl"@endif>
-@include('layouts.front_layout.nav') 
+    
+@include('layouts.front_layout.includes.nav') 
 {{--search bar --}}
 
 <div class="search-bar">
@@ -31,38 +37,6 @@
     </div>
 </div>
 {{--login and signup--}}
-@include('layouts.front_layout.login_signup')
+@include('layouts.front_layout.includes.login_signup')
  
-{{--full slider--}}
-@include('layouts.front_layout.banner')
-{{-- end full-slider-box --}}
 
-{{-- Featured Categories --}}
-<div class="feature-heading">
-    <h2>Featured Categories</h2>
-</div> 
-@include('layouts.front_layout.featured_categories')
-
-<!-- new arrival-->
-@include('layouts.front_layout.new_arrival')
- 
-{{--  end new arrival --}}
-
- {{-- offer --}}
-@include('layouts.front_layout.offer')
-
-<!-- featured propducts-->
-@include('layouts.front_layout.featured_products')
- 
-{{-- services --}}
- @include('layouts.front_layout.services')
-
-{{-- footer --}}
-
-<footer>
- @include('layout.front_layout.footer')
-</footer>
-
-</body>
-
-</html>

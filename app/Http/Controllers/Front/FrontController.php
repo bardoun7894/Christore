@@ -10,28 +10,51 @@ use App\Models\Category;
 use App\Models\NavLink;
 use App\Models\Product;
 use Illuminate\Http\Request;
- 
+
 class FrontController extends Controller
 {
-
-
    public function front(){
     // info('Name entered is in fact Tim'); // This does get printed
-    $sections = Section::all();
-    $language =   app()->getLocale();
        $links=NavLink::all();
        $products = Product::with(['category'])->get();
        $products_chunk = Product::with(['category'])->get()->toArray();
        $categories =Category::all();
        $banners=Banner::all();
        if(count($products)>0){
-       $products_chunk = array_chunk($products_chunk, ceil(count($products_chunk) / count($categories))); 
+       $products_chunk = array_chunk($products_chunk, ceil(count($products_chunk) / count($categories)));
        }else{
-              $products_chunk=$products;
+            $products_chunk=$products;
        }
-      
-//       dd($banners);die;
-    // dd($categories);die;
-       return view('layouts.front_layout.lo')->with(compact(['categories','links','products','banners','sections','language']));
+     return view('layouts.front_layout.home')->with(compact(['categories','links','products','banners']));
    }
+
+   public function get_all_products(){
+       $products = Product::where('status',1);
+
+    //   if sort selected by user
+       if(isset($_GET['sort'])&& !empty($_GET['sort'])){
+          switch ($_GET['sort']){
+              case 'latest_products':
+                  $products=  $products->orderBy('id','desc');
+                break;
+              case 'price_lowest':
+                  $products=  $products->orderBy('product_price','ASC');
+                break;
+              case 'price_highest':
+                     $products=  $products->orderBy('product_price','desc');
+               break;
+                case 'product_name_a_z':
+                   $products=  $products->orderBy('product_name','asc');
+                break;
+                case 'product_name_z_a':
+                   $products=  $products->orderBy('product_name','desc');
+                break;
+          }
+
+          }
+           $products=  $products->paginate(2);
+
+      return view('layouts.front_layout.products')->with(compact(['products']));
+   }
+
 }

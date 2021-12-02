@@ -5,10 +5,8 @@
     </div>
   <div class="product-container">
     {{-- product box --}}
-    @foreach ($products as $product) 
-         
-        <div class="product-box">
-         
+    @foreach ($products as $product)  
+        <div class="product-box"> 
           {{-- image --}}
           <div class="product-img">
             <a href="#" class="add-cart">
