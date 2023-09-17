@@ -54,10 +54,81 @@ $(document).on('click','.search',function (){
 $(document).on('click','.search-cancel',function (){
     $(".search-bar").removeClass('search-bar-active')
 })  ;
+function getCountD(){
+    var a="";
+    var k= [];
+    var input = document.getElementsByName('category_id[]');
+    for (var i = 0; i < input.length; i++) {
+       a = input[i].value;
+       k.push(a);
+    }
+    $.ajax(
+        {
+            type:'post',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url:'/'+localization+'/front/get_category_id',
+            data:{k:k},
+            success:function (resp) {
+                // document.getElementsByClassName("count_products_small")
+                // document.querySelector('.count_products_small').innerHTML=resp
+                $(".count_products_small").html(resp);
+                  console.log(resp+";;");
 
+            },error:function (error) {
+                console.info(error);
+            }
+        }
+    );
+
+}
 $(document).on('ready',function () {
+    //sort filter by urls
+    // $('#sort').on('change',function (){
+    //     this.form.submit();
+    // })
+    getCountD();
     $('#sort').on('change',function (){
-        this.form.submit();
+        var sort =$(this).val();
+        $.ajax(
+            {
+                type:'post',
+                headers: {
+               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url:'/'+localization+'/front/products',
+                data:{sort:sort},
+                success:function (resp) {
+                    console.log(resp+"2")
+                // $(".filter_products").html(resp);
+                console.log(resp);
+                },error:function (error) {
+                   console.info(error);
+                }
+            }
+        );
     })
+    $('.block-co').on('ready',function (){
+        var category_id =$(this).val();
+        console.log(category_id);
+        // $.ajax(
+        //     {
+        //         type:'post',
+        //         headers: {
+        //        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         url:'/'+localization+'/front/products',
+        //         data:{sort:sort},
+        //         success:function (resp) {
+        //         $(".filter_products").html(resp);
+        //         console.log(resp);
+        //         },error:function (error) {
+        //            console.info(error);
+        //         }
+        //     }
+        // );
+    })
+
 } );
 

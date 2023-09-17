@@ -8,8 +8,7 @@ use App\Http\Controllers\Admin\ProductController;
 use \App\Http\Controllers\Admin\SectionController ;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Route; 
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -26,12 +25,14 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 Auth::routes();
-
+Route::get('/a',function(){
+return "Did";
+});
 Route::group(['prefix' => LaravelLocalization::setLocale(),
     'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
 ],function () {
 //    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
-   Route::prefix('/admin')->namespace('Admin')->group(function(){
+   Route::prefix('admin')->namespace('Admin')->group(function(){
         // all the admin routes will be defined here
                 Route::match(['post','get'],'/', [App\Http\Controllers\Admin\AdminController::class, 'login']);
                 Route::group(['middleware' => ['admin']], function () {
@@ -93,8 +94,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),
         });
    Route::prefix('/front')->namespace('Front')->group(function (){
        Route::get('/', [\App\Http\Controllers\Front\FrontController::class, 'front']);
-       Route::get('/products', [\App\Http\Controllers\Front\FrontController::class, 'get_all_products']); 
-    //    Route::post('/sort_products', [\App\Http\Controllers\Front\FrontController::class, 'get_sorting']);
+       Route::match(['get','post'],'/products', [\App\Http\Controllers\Front\FrontController::class, 'get_all_products']);
+//       Route::match(['get','post'],'/get_category_id', [\App\Http\Controllers\Front\FrontController::class, 'countd']);
+       Route::match(['get','post'],'/{url?}', [\App\Http\Controllers\Front\CategoryController::class, 'categoryDetail']);
+
+       //    Route::post('/sort_products', [\App\Http\Controllers\Front\FrontController::class, 'get_sorting']);
 
     });
 });

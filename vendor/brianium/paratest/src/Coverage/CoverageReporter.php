@@ -15,9 +15,7 @@ use SebastianBergmann\CodeCoverage\Report\Text;
 use SebastianBergmann\CodeCoverage\Report\Xml\Facade as XmlReport;
 use SebastianBergmann\CodeCoverage\Version;
 
-/**
- * @internal
- */
+/** @internal */
 final class CoverageReporter
 {
     /** @var CodeCoverage */
@@ -74,7 +72,7 @@ final class CoverageReporter
         if ($this->codeCoverageConfiguration !== null && $this->codeCoverageConfiguration->hasHtml()) {
             $html = new Html\Facade(
                 $this->codeCoverageConfiguration->html()->lowUpperBound(),
-                $this->codeCoverageConfiguration->html()->highLowerBound()
+                $this->codeCoverageConfiguration->html()->highLowerBound(),
             );
         }
 
@@ -94,12 +92,23 @@ final class CoverageReporter
 
     /**
      * Generate text coverage report.
+     *
+     * @param bool $colors Coverage colors
      */
-    public function text(): string
+    public function text(bool $colors): string
     {
         $text = new Text();
+        if ($this->codeCoverageConfiguration !== null && $this->codeCoverageConfiguration->hasText()) {
+            $hasHtml = $this->codeCoverageConfiguration->hasHtml();
+            $text    = new Text(
+                $hasHtml ? $this->codeCoverageConfiguration->html()->lowUpperBound() : 50,
+                $hasHtml ? $this->codeCoverageConfiguration->html()->highLowerBound() : 90,
+                $this->codeCoverageConfiguration->text()->showUncoveredFiles(),
+                $this->codeCoverageConfiguration->text()->showOnlySummary(),
+            );
+        }
 
-        return $text->process($this->coverage);
+        return $text->process($this->coverage, $colors);
     }
 
     /**

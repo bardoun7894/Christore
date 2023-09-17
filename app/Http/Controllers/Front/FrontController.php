@@ -28,10 +28,46 @@ class FrontController extends Controller
      return view('layouts.front_layout.home')->with(compact(['categories','links','products','banners']));
    }
 
-   public function get_all_products(){
-       $products = Product::where('status',1);
+   public function get_all_products(Request $request){
 
-    //   if sort selected by user
+
+       if($request->ajax()){
+          $data= $request->all();
+         foreach ($data as $d){
+             $products = Product::where('status',1);
+             //  if sort selected by user
+             if(isset($d)&& !empty($d)){
+                 switch ($d){
+                     case 'latest_products':
+                         $products=  $products->orderBy('id','desc');
+                         break;
+                     case 'price_lowest':
+                         $products=  $products->orderBy('product_price','ASC');
+                         break;
+                     case 'price_highest':
+                         $products=  $products->orderBy('product_price','desc');
+                         break;
+                     case 'product_name_a_z':
+                         $products=  $products->orderBy('product_name','asc');
+                         break;
+                     case 'product_name_z_a':
+                         $products=  $products->orderBy('product_name','desc');
+                         break;
+                 }
+
+             }
+             $products=  $products->paginate(2);
+
+             return view('layouts.front_layout.ajax_products_content')->with(compact(['products','d']));
+
+         }
+       }else{
+           $products = Product::where('status',1);
+
+
+            $categories=Category::get()->toArray();
+
+         //  if sort selected by user
        if(isset($_GET['sort'])&& !empty($_GET['sort'])){
           switch ($_GET['sort']){
               case 'latest_products':
@@ -51,10 +87,20 @@ class FrontController extends Controller
                 break;
           }
 
-          }
-           $products=  $products->paginate(2);
-
-      return view('layouts.front_layout.products')->with(compact(['products']));
    }
+      $products=  $products->paginate(2);
+     return view('layouts.front_layout.products')->with(compact(['products','categories']));
+       }   }
+   public function countd(Request $request){
+       if ($request->ajax()){
+           $data=$request->all();
+            foreach($data as $value){
+//  $count_products = Product::where('status',1)->where('category_id',$data)->get();
+           return $request->json($value) ;
+       }
 
+    //   return $count_products;
 }
+}
+}
+
